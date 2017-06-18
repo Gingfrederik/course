@@ -1,0 +1,44 @@
+<template>
+  <main> 
+  <div class="Aligner">
+    <div class="Aligner-item">
+      <div class="container">
+        <h1>新選課系統</h1> 
+      </div>
+    </div>
+  </div>
+  </main>
+</template>
+
+<script>
+export default {
+  name: 'Home'
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.Aligner {
+  display: flex;
+  align-items: center;
+  min-height: 24em;
+  justify-content: center;
+}
+
+.Aligner-item {
+  flex: 2;
+}
+
+.Aligner-item--top {
+  align-self: flex-start;
+}
+
+.Aligner-item--bottom {
+  align-self: flex-end;
+}
+
+.Aligner-item--fixed {
+  flex: none;
+  max-width: 50%;
+}
+</style>
