@@ -1,7 +1,5 @@
 <template>
   <main class="container"> 
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap4.min.css">
   <br></br>
   <table id="example" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
     <thead>
