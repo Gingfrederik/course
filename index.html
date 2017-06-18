@@ -20,24 +20,6 @@
     <script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.1.1/js/responsive.bootstrap4.min.js"></script>
     <script type="text/javascript">
-$(document).ready(function() {
-  $('#example').DataTable({
-    responsive: {
-      details: {
-        display: $.fn.dataTable.Responsive.display.modal( {
-          header: function ( row ) {
-            var data = row.data();
-            return 'Details for '+data[0]+' '+data[1];
-          }
-        } ),
-        renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
-          tableClass: 'table'
-        } )
-      }
-    }
-  });
-});
-
 $('.nav-link').on('click', function(){
   $('#bd-main-nav').collapse('toggle');
 });
