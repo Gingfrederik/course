@@ -36,7 +36,7 @@ import axios from 'axios'
 export default {
   name: 'Search',
   created() {
-    axios.get('http://13.113.118.93/course_list')
+    axios.get('https://idontknow.com.tw/course_list')
     .then(response => {
       // JSON responses are automatically parsed.
       this.courses = response.data
