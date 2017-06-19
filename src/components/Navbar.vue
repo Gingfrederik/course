@@ -9,34 +9,31 @@
       </div>
       <div class="collapse navbar-collapse" id="bd-main-nav">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active hidden-lg-up">
-            <a class="nav-link" data-toggle="collapse" data-target="#bd-main-nav">CLOSE</a>
+          <li class="nav-item active">
+            <a v-on:click="navbar" class="nav-link" href="#">首頁</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">首頁</a>
+            <a v-on:click="handler" class="nav-link" href="#/search">課程查詢</a>
           </li>
           <li class="nav-item active">
-            <a v-on:click="opentable" class="nav-link" href="#/search">課程查詢</a>
+            <a v-on:click="navbar" class="nav-link" href="#">追蹤清單</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">追蹤清單</a>
+            <a v-on:click="navbar" class="nav-link" href="#">登記清單</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">登記清單</a>
+            <a v-on:click="navbar" class="nav-link" href="#">修課清單</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">修課清單</a>
+            <a v-on:click="navbar" class="nav-link" href="#">課程表</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">課程表</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#">選課紀錄</a>
+            <a v-on:click="navbar" class="nav-link" href="#">選課紀錄</a>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a class="nav-link active" href="#/login"><i class="fa fa-user" aria-hidden="true"></i> 登入</a></li>
-          <li><a class="nav-link active" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> 登出</a></li>
+          <li><a v-on:click="navbar" class="nav-link active" href="#/login"><i class="fa fa-user" aria-hidden="true"></i> 登入</a></li>
+          <li><a v-on:click="navbar" class="nav-link active" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> 登出</a></li>
         </ul>
       </div>
     </nav>
@@ -47,7 +44,7 @@
 export default {
   name: 'Navbar',
   methods: {
-    opentable: function(event){
+    table: function(event){
       jQuery(document).ready(function() {
         jQuery('#example').DataTable({
           responsive: {
@@ -55,7 +52,7 @@ export default {
               display: jQuery.fn.dataTable.Responsive.display.modal( {
                 header: function ( row ) {
                   var data = row.data();
-                  return 'Details for '+data[0]+' '+data[1];
+                  return data[0]+' '+data[1];
                 }
               } ),
               renderer: jQuery.fn.dataTable.Responsive.renderer.tableAll( {
@@ -65,11 +62,17 @@ export default {
           }   
         }); 
       });
+    },
+    navbar: function(){
+      jQuery('#bd-main-nav').collapse('toggle');
+    },
+    handler: function(){
+      this.navbar();
+      this.table();
     }
   }
 }
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .navbar{
