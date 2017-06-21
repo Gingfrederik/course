@@ -9,6 +9,7 @@
         <th>授課教師</th>
         <th>選課餘額</th>
         <th>開課人數</th>
+        <th>課程代碼</th>
         <th>學分</th>
         <th>課程類別</th>
       </tr>
@@ -20,6 +21,7 @@
             <td>{{course.TEACHER_CNAME}}</td>
             <td>{{course.ACT_REMAIN}}</td>
             <td>{{course.OP_MAN}}</td>
+            <td>{{course.OP_CODE}}</td>
             <td>{{course.OP_CREDIT}}</td>
             <td>{{course.OP_TYPE}}</td>
       </tr>

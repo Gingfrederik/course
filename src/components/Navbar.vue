@@ -13,7 +13,7 @@
             <a v-on:click="navbar" class="nav-link" href="#">首頁</a>
           </li>
           <li class="nav-item active">
-            <a v-on:click="handler" class="nav-link" href="#/search">課程查詢</a>
+            <a v-on:click="navbar" class="nav-link" href="#/search">課程查詢</a>
           </li>
           <li class="nav-item active">
             <a v-on:click="navbar" class="nav-link" href="#">追蹤清單</a>
@@ -44,31 +44,8 @@
 export default {
   name: 'Navbar',
   methods: {
-    table: function(event){
-      jQuery(document).ready(function() {
-        jQuery('#example').DataTable({
-          responsive: {
-            details: {
-              display: jQuery.fn.dataTable.Responsive.display.modal( {
-                header: function ( row ) {
-                  var data = row.data();
-                  return data[0]+' '+data[1];
-                }
-              } ),
-              renderer: jQuery.fn.dataTable.Responsive.renderer.tableAll( {
-                tableClass: 'table'
-              } )
-            }
-          }   
-        }); 
-      });
-    },
     navbar: function(){
       jQuery('#bd-main-nav').collapse('toggle');
-    },
-    handler: function(){
-      this.navbar();
-      this.table();
     }
   }
 }
