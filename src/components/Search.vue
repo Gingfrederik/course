@@ -15,8 +15,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for = "course in courses ">
-            <td>{{course.CURS_NM_C_S}}</td>
+	<tr v-for = "course in courses ">
+	    <td>{{course.CURS_NM_C_S}}  
+		<a target = "_blank" :href="'http://cmap.cycu.edu.tw:8080/Syllabus/CoursePreview.html?yearTerm=1052&opCode='+course.OP_CODE">
+		    <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i>
+		</a>
+		<a target = "_blank" :href="'https://coursewiki.clouder.today/courses?by_title='+course.CURS_NM_C_S+'&by_instructor='+course.TEACHER_CNAME">
+		    <i class="fa fa-question-circle fa-lg" aria-hidden="true"></i>
+		</a>
+	    </td>
             <td>{{course.OP_TIME_1}}</td>
             <td>{{course.TEACHER_CNAME}}</td>
             <td>{{course.ACT_REMAIN}}</td>
@@ -78,7 +85,6 @@ export default {
   min-height: 24em;
   justify-content: center;
 }
-
 .Aligner-item {
   flex: 2;
 }

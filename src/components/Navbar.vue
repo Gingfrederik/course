@@ -55,6 +55,9 @@ export default {
 .navbar{
   text-align:left;
 }
+.nav-link {
+  border-bottom: 1px solid #292b2c;
+}
 .nav-link:hover {
   border-bottom: 1px solid #ffffff;
 }
