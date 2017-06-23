@@ -5,6 +5,7 @@
     <thead>
       <tr>
         <th>課程名稱</th>
+        <th></th>
         <th>時間</th>
         <th>授課教師</th>
         <th>選課餘額</th>
@@ -16,7 +17,8 @@
     </thead>
     <tbody>
 	<tr v-for = "course in courses ">
-	    <td>{{course.CURS_NM_C_S}}  
+    <td>{{course.CURS_NM_C_S}}</td>
+    <td>
 		<a target = "_blank" :href="'http://cmap.cycu.edu.tw:8080/Syllabus/CoursePreview.html?yearTerm=1052&opCode='+course.OP_CODE">
 		    <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i>
 		</a>
@@ -67,14 +69,14 @@ export default {
           }   
         }) 
       })
-    }) 
+    })
   },
-  data:function (course) {
-    return {
-      courses:this.courses
+    data:function (course) {
+      return {
+        courses:this.courses
+      }
     }
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
