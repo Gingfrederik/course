@@ -1,9 +1,11 @@
 <template>
   <main> 
-  <div class="Aligner">
-    <div class="Aligner-item">
-      <div class="container">
-        <h1>新選課系統</h1> 
+  <div class="container">
+    <div class="Aligner">
+      <div class="Aligner-item">
+        <div class="container">
+          <h1>新選課系統</h1> 
+        </div>
       </div>
     </div>
   </div>
