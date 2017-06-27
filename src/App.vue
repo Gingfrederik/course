@@ -15,6 +15,12 @@ export default {
   components: {
     Navbar,
     Footer
+  },
+  data: function(){
+    return {
+      user_course:['EE336G','EE255G','EE360G','EE380E','GR189A',
+      'EE144A','GE286B','GE439B','EE367G','EE415G']
+    }
   }
 }
 </script>

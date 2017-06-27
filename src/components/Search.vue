@@ -143,17 +143,17 @@
         </div>
         </td>
         <td>
-          <a target = "_blank" :href="'http://cmap.cycu.edu.tw:8080/Syllabus/CoursePreview.html?yearTerm=1052&opCode='+course.OP_CODE">
+          <a target = "_blank" :href="'http://cmap.cycu.edu.tw:8080/Syllabus/CoursePreview.html?yearTerm='+yearTerm+'&opCode='+course.OP_CODE">
             <i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>
           </a>
-          <a target = "_blank" :href="'https://coursewiki.clouder.today/courses?by_title='+course.CURS_NM_C_S+'&by_instructor='+course.TEACHER_CNAME">
+          <a target = "_blank" :href="'https://coursewiki.clouder.today/courses/'+course.OP_CODE">
             <i class="fa fa-question-circle fa-2x" aria-hidden="true"></i>
           </a>
         </td>
         <td>{{course.CURS_NM_C_S}}</td>
         <td>{{course.OP_TIME_1}}</td>
         <td>{{course.TEACHER_CNAME}}</td>
-        <td>{{course.ACT_REMAIN}}/{{course.OP_MAN}}</td>
+        <td>{{course.ACT_REMAIN}}</td>
         <td>{{course.OP_MAN}}</td>
         <td>{{course.OP_CODE}}</td>
         <td>{{course.OP_CREDIT}}</td>
@@ -172,7 +172,7 @@ import axios from 'axios'
 export default {
   name: 'Search',
   created() {
-    axios.get('https://idontknow.com.tw/course_list')
+    axios.get('http://127.0.0.1:5000/course_list?CURS_NM_C_S=人生哲學')
     .then(response => {
       // JSON responses are automatically parsed.
       this.courses = response.data
@@ -231,6 +231,7 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
   },
   data: function(){
     return {
+      yearTerm:"1052",
       courses:this.courses
     }
   },
