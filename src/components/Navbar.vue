@@ -25,7 +25,7 @@
             <a v-on:click="navbar" class="nav-link" href="#">修課清單</a>
           </li>
           <li class="nav-item active">
-            <a v-on:click="navbar" class="nav-link" href="#">課程表</a>
+            <a v-on:click="navbar" class="nav-link" href="#/table">課程表</a>
           </li>
           <li class="nav-item active">
             <a v-on:click="navbar" class="nav-link" href="#">選課紀錄</a>
