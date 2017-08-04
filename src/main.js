@@ -3,12 +3,23 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueStash from 'vue-stash'
 
+Vue.use(VueStash)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  data: {
+    store: {
+      student:null,
+      idcode:'',
+      loginstatus: false,
+      cookie:'',
+      pageid: ''
+    }
+  },
   render: h => h(App),
   router: router
 })

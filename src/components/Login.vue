@@ -6,10 +6,10 @@
         <form class="form-signin">
           <h1 class="form-signin-heading">登入</h1>
           <label for="inputID" class="sr-only">學號</label>
-          <input type="text" id="inputID" class="form-control" placeholder="學號" required autofocus>
+          <input type="text" v-model="inid" class="form-control" placeholder="學號" required autofocus>
           <label for="inputPassword" class="sr-only">密碼</label>
-          <input type="password" id="inputPassword" class="form-control" placeholder="密碼" required>
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+          <input type="password" v-model="inpass" class="form-control" placeholder="密碼" required>
+          <button class="btn btn-lg btn-primary btn-block" @click="hash" type="submit">Login</button>
         </form>
       </div>
     </div>
@@ -18,8 +18,81 @@
 </template>
 
 <script>
+import axios from 'axios'
+import CryptoJS from 'crypto-js'
+import qs from 'qs'
+
+axios.defaults.withCredentials = true;
+
 export default {
-  name: 'Login'
+  name: 'Login',
+  methods: {
+    hash: function(event){
+      axios.get('http://127.0.0.1:5000/login_init', {withCredentials: true})
+      .then(response=> {
+        this.loginstatus = response.data.result
+        if(this.loginstatus)
+        {
+          console.log(response.headers);
+          this.$store.pageid = response.headers['securerandom']
+        }
+      })
+      .then(()=>{
+        if(this.loginstatus)
+        {
+        var md5pass = CryptoJS.MD5(this.inpass).toString();
+        var hashpass = CryptoJS.algo.HMAC.create(CryptoJS.algo.SHA256, md5pass);
+        this.$store.idcode = this.inid;
+        hashpass.update(this.inid);
+        hashpass.update(this.$store.pageid);
+        this.hashout = encodeURIComponent(hashpass.finalize());
+        this.inpass = null;
+        console.log(this.$store.idcode);
+        console.log(this.hashout);
+        console.log('done hash')
+      }
+      })
+      .then(()=>{
+        if(this.loginstatus)
+        {
+        axios.post('http://127.0.0.1:5000/login',
+        qs.stringify({'idcode':this.$store.idcode,
+        'hash':this.hashout}),
+        {headers:{'Page-Id':this.$store.pageid}, withCredentials: true})
+      .then(response=> {
+        console.log(this.$store.idcode);
+        console.log(this.hashout);
+        console.log(response.data.result)
+        if(response.data.result===true)
+        {
+          this.$store.loginstatus=true
+          this.$router.push('/search')
+        }
+      })
+      .then(()=>{
+        axios.get('http://127.0.0.1:5000/content',
+        {headers:{'Page-Id':this.$store.pageid}, withCredentials: true})
+        .then(response=>{
+          console.log(response.data)
+          this.$store.student = response.data
+        })
+      })
+    }
+    else
+    {
+      this.$router.push('/close')
+    }
+    })
+  }
+  },
+  data: function(){
+    return {
+      inid:'',
+      inpass:'',
+      hashout:'',
+      loginstatus:null,
+    }
+  }
 }
 </script>
 

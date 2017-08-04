@@ -4,7 +4,7 @@
     <div class="Aligner">
       <div class="Aligner-item">
         <div class="container">
-          <h1>選課系統</h1> 
+          <h1>系統關閉中</h1> 
         </div>
       </div>
     </div>
@@ -16,7 +16,7 @@
 import axios from 'axios'
 
 export default {
-  name: 'Home',
+  name: 'Close',
   created() {
     axios.get('http://127.0.0.1:5000/stage')
     .then(response => {

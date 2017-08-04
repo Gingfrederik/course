@@ -1,23 +1,51 @@
 <template>
   <div id="app">
-    <Navbar></Navbar>
+    <navbar></navbar>
     <router-view></router-view>
-    <Footer></Footer>
+    <myfooter></myfooter>
   </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
+import navbar from './components/Navbar'
+import myfooter from './components/Footer'
+import axios from 'axios'
 
 export default {
   name: 'app',
   components: {
-    Navbar,
-    Footer
+    navbar,
+    myfooter
+  },
+  created() {
+    axios.get('http://127.0.0.1:5000/stage')
+    .then(response => {
+      this.stage = response.data
+    })
+  },
+  method:{
+    pulse:function(){
+      if(this.$store.loginstatus==true)
+      {
+        axios.post('http://127.0.0.1:5000/timelist',
+        qs.stringify({'idcode':this.$store.idcode}),
+        {headers:{'Page-Id':this.$store.pageid},
+        withCredentials: true})
+        .then(response=>{
+          this.times= response.data
+          setTimeout(this.pulse,300000);
+        })
+      }
+      else
+      {
+        setTimeout(this.pulse,100000);
+      }
+    }
   },
   data: function(){
     return {
+      dat: this.$store,
+      stage:this.stage,
       user_course:['EE336G','EE255G','EE360G','EE380E','GR189A',
       'EE144A','GE286B','GE439B','EE367G','EE415G']
     }
