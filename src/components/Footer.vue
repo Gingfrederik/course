@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="container">
-      <span class="text-muted"></span>
+      <span class="text-muted">Copyright &copy; Gingfrederik</span>
     </div>
   </footer>
 </template>
