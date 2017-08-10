@@ -348,10 +348,10 @@
               </div>
             </td>
             <td>
-              <a target="_blank" :href="'http://cmap.cycu.edu.tw:8080/Syllabus/CoursePreview.html?yearTerm='+yearTerm+'&opCode='+course.op_code">
+              <a target="_blank" :href="'https://cmap.cycu.edu.tw:8080/Syllabus/CoursePreview.html?yearTerm='+yearTerm+'&opCode='+course.op_code">
                 <i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>
               </a>
-              <a target="_blank" :href="'https://coursewiki.clouder.today/courses/'+course.op_code">
+              <a target="_blank" :href="'httpss://coursewiki.clouder.today/courses/'+course.op_code">
                 <i class="fa fa-question-circle fa-2x" aria-hidden="true"></i>
               </a>
             </td>
@@ -380,7 +380,7 @@
     created() {
       //this.clear();
       //this.gotcou.dept_code=this.$store.student.stmd_cur_dpt;
-      //axios.post('http://127.0.0.1:5000/course',
+      //axios.post('https://127.0.0.1:5000/course',
       //qs.stringify(this.gotcou),
       //{headers:{'Page-Id':this.$store.pageid},withCredentials: true})
       //.then(response => {
@@ -415,7 +415,6 @@
                     '</tr>' :
                     '';
                 }).join('');
-                console.log(data);
                 return data ?
                   $('<table/ class="table dtr-details">').append(data) : false;
               }
@@ -464,7 +463,7 @@
         jQuery(":radio").prop('checked', false).parent().removeClass('active');
         this.clear();
         this.gotcou.dept_code = this.$store.student.stmd_cur_dpt;
-        axios.post('http://'+this.$store.ip+'/course',
+        axios.post('https://'+this.$store.ip+'/course',
           qs.stringify(this.gotcou),
           { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
           .then(response => {
@@ -476,7 +475,7 @@
           })
       },
       cou: function (cou, event) {
-        axios.post('http://'+this.$store.ip+'/course',
+        axios.post('https://'+this.$store.ip+'/course',
           qs.stringify(this.gotcou),
           { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
           .then(response => {
@@ -487,8 +486,7 @@
           })
       },
       reg: function (opcode, event) {
-        console.log(this.id);
-        axios.post('http://'+this.$store.ip+'/addregister',
+        axios.post('https://'+this.$store.ip+'/addregister',
           qs.stringify({ 'opcode': opcode }),
           { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
           .then(response => {
@@ -498,7 +496,11 @@
                 message: "<br>" + response.data.data.op_code + "</br>" +
                 response.data.data.cname
               }, {
-                  type: 'success'
+                  type: 'success',
+ placement: {
+                  from: "bottom",
+                  align: "right"
+                },  
                 });
             }
             else {
@@ -506,15 +508,18 @@
                 title: "<strong>失敗</strong>: ",
                 message: "<br>" + response.data.message + "</br>"
               }, {
-                  type: 'danger'
+                  type: 'danger',
+ placement: {
+                  from: "bottom",
+                  align: "right"
+                },  
                 });
             }
           }
           )
       },
       tra: function (opcode, event) {
-        console.log(this.id);
-        axios.post('http://'+this.$store.ip+'/addtrace',
+        axios.post('https://'+this.$store.ip+'/addtrace',
           qs.stringify({ 'opcode': opcode }),
           { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
           .then(response => {
@@ -524,15 +529,18 @@
                 message: "<br>" + response.data.data.op_code + "</br>" +
                 response.data.data.cname
               }, {
-                  type: 'success'
+                  type: 'success',
+ placement: {
+                  from: "bottom",
+                  align: "right"
+                },  
                 });
             }
           }
           )
       },
       addcou: function (opcode, event) {
-        console.log(this.id);
-        axios.post('http://'+this.$store.ip+'/addgot',
+        axios.post('https://'+this.$store.ip+'/addgot',
           qs.stringify({ 'opcode': opcode }),
           { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
           .then(response => {
@@ -542,7 +550,11 @@
                 message: "<br>" + response.data.data.op_code + "</br>" +
                 response.data.data.cname
               }, {
-                  type: 'success'
+                  type: 'success',
+ placement: {
+                  from: "bottom",
+                  align: "right"
+                },  
                 });
             }
             else {
@@ -550,7 +562,11 @@
                 title: "<strong>失敗</strong>: ",
                 message: "<br>" + response.data.message + "</br>"
               }, {
-                  type: 'danger'
+                  type: 'danger',
+ placement: {
+                  from: "bottom",
+                  align: "right"
+                },  
                 });
             }
           }

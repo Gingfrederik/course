@@ -48,10 +48,10 @@
         </div>
         </td>
         <td>
-          <a target = "_blank" :href="'http://cmap.cycu.edu.tw:8080/Syllabus/CoursePreview.html?yearTerm='+yearTerm+'&opCode='+course.op_code">
+          <a target = "_blank" :href="'https://cmap.cycu.edu.tw:8080/Syllabus/CoursePreview.html?yearTerm='+yearTerm+'&opCode='+course.op_code">
             <i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>
           </a>
-          <a target = "_blank" :href="'https://coursewiki.clouder.today/courses/'+course.op_code">
+          <a target = "_blank" :href="'httpss://coursewiki.clouder.today/courses/'+course.op_code">
             <i class="fa fa-question-circle fa-2x" aria-hidden="true"></i>
           </a>
         </td>
@@ -78,7 +78,7 @@ import qs from 'qs'
 export default {
   name: 'Search',
   created() {
-    axios.post('http://'+this.$store.ip+'/gotlist',
+    axios.post('https://'+this.$store.ip+'/gotlist',
     qs.stringify({'idcode':this.$store.idcode}),
     {headers:{'Page-Id':this.$store.pageid},withCredentials: true})
     .then(response => {
@@ -105,7 +105,6 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
                         '</tr>' :
                         '';
                 } ).join('');
-                console.log(data);
                 return data ?
                     $('<table/ class="table dtr-details">').append( data ) :
                     false;
@@ -151,8 +150,7 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
   },
   methods: {
     delgot: function(opcode,event){
-      console.log(this.id);
-      axios.post('http://'+this.$store.ip+'/delgot',
+      axios.post('https://'+this.$store.ip+'/delgot',
       qs.stringify({'opcode':opcode}),
       {headers:{'Page-Id':this.id},withCredentials: true})
       .then(response=>
@@ -164,9 +162,13 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
             message: "<br>"+response.data.data.op_code+"</br>"+
             response.data.data.cname
           },{
-            type: 'success'
+            type: 'success',
+ placement: {
+                  from: "bottom",
+                  align: "right"
+                },  
           });
-      axios.post('http://'+this.$store.ip+'/gotlist',
+      axios.post('https://'+this.$store.ip+'/gotlist',
       qs.stringify({'idcode':this.$store.idcode}),
       {headers:{'Page-Id':this.$store.pageid},withCredentials: true})
       .then(response => {
@@ -180,7 +182,11 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
             title: "<strong>失敗</strong>: ",
             message: "<br>"+response.data.message+"</br>"
           },{
-            type: 'danger'
+            type: 'danger',
+ placement: {
+                  from: "bottom",
+                  align: "right"
+                },  
           });
         }
       })

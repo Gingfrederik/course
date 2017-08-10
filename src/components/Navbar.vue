@@ -36,7 +36,7 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a v-on:click="navbar" class="nav-link active" href="#/login"><i class="fa fa-user" aria-hidden="true"></i> 登入</a></li>
+          <li><a v-on:click="navbar" class="nav-link active" href="?#/login"><i class="fa fa-user" aria-hidden="true"></i> 登入</a></li>
         </ul>
       </div>
     </nav>
@@ -49,7 +49,7 @@ export default {
 	methods: {
 		navbar: function(){
 			jQuery('#bd-main-nav').collapse('toggle');
-		}
+		},
 	},
   data: function(){
     return{

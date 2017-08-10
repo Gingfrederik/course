@@ -43,7 +43,7 @@ axios.defaults.withCredentials = true;
 export default {
   name: 'Home',
   created() {
-    axios.post('http://'+this.$store.ip+'/timelist',
+    axios.post('https://'+this.$store.ip+'/timelist',
     qs.stringify({'idcode':this.$store.idcode}),
     {headers:{'Page-Id':this.$store.pageid},
     withCredentials: true})

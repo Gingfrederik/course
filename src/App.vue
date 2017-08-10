@@ -20,7 +20,7 @@ export default {
   },
   created() {
     this.pulse();
-    axios.get('http://'+this.$store.ip+'/stage')
+    axios.get('https://'+this.$store.ip+'/stage')
     .then(response => {
       this.stage = response.data;
       for(var i=0;i<this.stage.datas.length;i++)
@@ -40,7 +40,7 @@ export default {
       console.log('pulse');
       if(this.$store.loginstatus==true)
       {
-        axios.post('http://127.0.0.1:5000/timelist',
+        axios.post('https://127.0.0.1:5000/timelist',
         qs.stringify({'idcode':this.$store.idcode}),
         {headers:{'Page-Id':this.$store.pageid},
         withCredentials: true})

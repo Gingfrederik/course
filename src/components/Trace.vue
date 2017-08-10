@@ -54,10 +54,10 @@
         </div>
         </td>
         <td>
-          <a target = "_blank" :href="'http://cmap.cycu.edu.tw:8080/Syllabus/CoursePreview.html?yearTerm='+yearTerm+'&opCode='+course.op_code">
+          <a target = "_blank" :href="'https://cmap.cycu.edu.tw:8080/Syllabus/CoursePreview.html?yearTerm='+yearTerm+'&opCode='+course.op_code">
             <i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>
           </a>
-          <a target = "_blank" :href="'https://coursewiki.clouder.today/courses/'+course.op_code">
+          <a target = "_blank" :href="'httpss://coursewiki.clouder.today/courses/'+course.op_code">
             <i class="fa fa-question-circle fa-2x" aria-hidden="true"></i>
           </a>
         </td>
@@ -84,7 +84,7 @@ import qs from 'qs'
 export default {
   name: 'Search',
   created() {
-    axios.get('http://'+this.$store.ip+'/tracelist',
+    axios.get('https://'+this.$store.ip+'/tracelist',
     {headers:{'Page-Id':this.$store.pageid},withCredentials: true})
     .then(response => {
       this.courses = response.data
@@ -108,7 +108,6 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
                         '</tr>' :
                         '';
                 } ).join('');
-                console.log(data);
                 return data ?
                     $('<table/ class="table dtr-details">').append( data ) :
                     false;
@@ -154,8 +153,7 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
   },
   methods: {
     reg: function(opcode,event){
-      console.log(this.id);
-      axios.post('http://'+this.$store.ip+'/addregister',
+      axios.post('https://'+this.$store.ip+'/addregister',
       qs.stringify({'opcode':opcode}),
       {headers:{'Page-Id':this.id},withCredentials: true})
       .then(response=>
@@ -164,10 +162,14 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
         {
           jQuery.notify({
             title: "<strong>已登記</strong>: ",
-            message: "<br>"+response.data.data.op_code+"</br>"+
-            response.data.data.cname
-          },{
-            type: 'success'
+	    message: "<br>"+response.data.data.op_code+"</br>"+
+	    response.data.data.cname
+	    },{
+type: 'success',
+placement: {
+from: "bottom",
+align: "right"
+},  
           });
         }
         else
@@ -176,15 +178,18 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
             title: "<strong>失敗</strong>: ",
             message: "<br>"+response.data.message+"</br>"
           },{
-            type: 'danger'
+            type: 'danger',
+ placement: {
+                  from: "bottom",
+                  align: "right"
+                },  
           });
         }
       }
       )
     },
     deltra: function(opcode,event){
-      console.log(this.id);
-      axios.post('http://'+this.$store.ip+'/deltrace',
+      axios.post('https://'+this.$store.ip+'/deltrace',
       qs.stringify({'opcode':opcode}),
       {headers:{'Page-Id':this.id},withCredentials: true})
       .then(response=>
@@ -196,9 +201,13 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
             message:""
             }
           ,{
-            type: 'success'
+            type: 'success',
+ placement: {
+                  from: "bottom",
+                  align: "right"
+                },  
           });
-          axios.get('http://'+this.$store.ip+'/tracelist',
+          axios.get('https://'+this.$store.ip+'/tracelist',
           {headers:{'Page-Id':this.$store.pageid},withCredentials: true})
           .then(response => {
             this.courses = response.data;
@@ -211,7 +220,11 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
             title: "<strong>失敗</strong>: ",
             message: "<br>"+response.data.message+"</br>"
           },{
-            type: 'danger'
+            type: 'danger',
+ placement: {
+                  from: "bottom",
+                  align: "right"
+                },  
           });
         }
       }

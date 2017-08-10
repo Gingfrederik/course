@@ -6,7 +6,7 @@
           <form class="form-signin">
             <h1 class="form-signin-heading">登入</h1>
             <label for="inputID" class="sr-only">學號</label>
-            <input type="text" v-model="inid" class="form-control" placeholder="學號" required autofocus>
+            <input type="number" v-model="inid" class="form-control" placeholder="學號" required autofocus>
             <label for="inputPassword" class="sr-only">密碼</label>
             <input type="password" v-model="inpass" class="form-control" placeholder="密碼" required>
             <button class="btn btn-lg btn-primary btn-block" @click="hash" type="submit">Login</button>
@@ -28,11 +28,10 @@
     name: 'Login',
     methods: {
       hash: function (event) {
-        axios.get('http://'+this.$store.ip+'/login_init', { withCredentials: true })
+        axios.get('https://'+this.$store.ip+'/login_init', { withCredentials: true })
           .then(response => {
-            this.loginstatus = response.data.result
+            this.loginstatus = response.data.result;
             if (this.loginstatus) {
-              console.log(response.headers);
               this.$store.pageid = response.headers['securerandom']
             }
           })
@@ -45,33 +44,26 @@
               hashpass.update(this.$store.pageid);
               this.hashout = encodeURIComponent(hashpass.finalize());
               this.inpass = null;
-              console.log(this.$store.idcode);
-              console.log(this.hashout);
-              console.log('done hash')
             }
           })
           .then(() => {
             if (this.loginstatus) {
-              axios.post('http://'+this.$store.ip+'/login',
+              axios.post('https://'+this.$store.ip+'/login',
                 qs.stringify({
                   'idcode': this.$store.idcode,
                   'hash': this.hashout
                 }),
                 { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
                 .then(response => {
-                  console.log(this.$store.idcode);
-                  console.log(this.hashout);
-                  console.log(response.data.result)
                   if (response.data.result === true) {
                     this.$store.loginstatus = true
-                    axios.get('http://'+this.$store.ip+'/content',
+                    axios.get('https://'+this.$store.ip+'/content',
                       { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
                       .then(response => {
-                        console.log(response.data)
                         this.$store.student = response.data
                       })
                       .then(() => {
-                        axios.post('http://'+this.$store.ip+'/course',
+                        axios.post('https://'+this.$store.ip+'/course',
                           qs.stringify({ 'dept_code': this.$store.student.stmd_cur_dpt }),
                           { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
                           .then(response => {
@@ -88,7 +80,11 @@
                       title: "<strong>失敗</strong>: ",
                       message: response.data.message
                     }, {
-                        type: 'danger'
+                        type: 'danger',
+ placement: {
+                  from: "bottom",
+                  align: "right"
+                },  
                       });
                   }
                 })

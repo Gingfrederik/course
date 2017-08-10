@@ -20,7 +20,7 @@ new Vue({
       cookie:'',
       pageid: '',
       courses:null,
-      ip:'',
+      ip:'idontknow.com.tw:8443',
     }
   },
   render: h => h(App),
