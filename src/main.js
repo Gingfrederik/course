@@ -13,11 +13,13 @@ new Vue({
   el: '#app',
   data: {
     store: {
+      stagecode:'',
       student:null,
       idcode:'',
       loginstatus: false,
       cookie:'',
-      pageid: ''
+      pageid: '',
+      courses:null,
     }
   },
   render: h => h(App),

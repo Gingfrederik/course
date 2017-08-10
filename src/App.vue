@@ -10,6 +10,7 @@
 import navbar from './components/Navbar'
 import myfooter from './components/Footer'
 import axios from 'axios'
+import qs from 'qs'
 
 export default {
   name: 'app',
@@ -18,13 +19,25 @@ export default {
     myfooter
   },
   created() {
+    this.pulse();
     axios.get('http://127.0.0.1:5000/stage')
     .then(response => {
-      this.stage = response.data
+      this.stage = response.data;
+      for(var i=0;i<this.stage.datas.length;i++)
+      {
+        this.stage.datas[i].bgtime = new Date(this.stage.datas[i].bgtime);
+        this.stage.datas[i].edtime = new Date(this.stage.datas[i].edtime);
+        var now = new Date();
+        if(this.stage.datas[i].bgtime<=now && this.stage.datas[i].edtime>now)
+        {
+          this.$store.stage = this.stage.datas[i].action_bits;
+        }
+      }
     })
   },
-  method:{
+  methods:{
     pulse:function(){
+      console.log('pulse');
       if(this.$store.loginstatus==true)
       {
         axios.post('http://127.0.0.1:5000/timelist',
@@ -40,7 +53,7 @@ export default {
       {
         setTimeout(this.pulse,100000);
       }
-    }
+    },
   },
   data: function(){
     return {

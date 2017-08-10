@@ -26,6 +26,7 @@ export default {
         this.$store.pageid='';
         this.$store.idcode='';
         this.$store.loginstatus=false;
+        setTimeout(()=>{this.$router.push('/')},500);
     })
   },
   methods: {

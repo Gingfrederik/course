@@ -6,6 +6,7 @@ import Logout from '../components/Logout'
 import Home from '../components/Home'
 
 import Trace from '../components/Trace'
+import Tmp from '../components/Tmp'
 import Register from '../components/Register'
 import Got from '../components/Got'
 import Search from '../components/Search'
@@ -19,6 +20,10 @@ export default new Router({
     {
       path: '/',
       component: Home
+    },
+    {
+      path: '/tmp',
+      component: Tmp 
     },
     {
       path: '/logout',

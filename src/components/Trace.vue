@@ -26,17 +26,16 @@
     <thead>
       <tr> 
         <th class="control max-desktop" data-priority="1"></th>
-        <th class="max-desktop" data-priority="2">選項</th>
-        <th class="min-tablet-p">資訊</th>
-        <th class="max-desktop" data-priority="3">課程名稱</th>
-        <th class="min-tablet-l">時間</th>
-        <th class="min-tablet-l">授課教師</th>
-        <th class="min-tablet-p">選課餘額</th>
-        <th class="desktop">開課人數</th>
-        <th class="desktop">課程代碼</th>
-        <th class="desktop">學分</th>
-        <th class="desktop">課程類別</th>
-        <th class="desktop">開課系級</th>
+            <th class="max-desktop" data-priority="2">選項</th>
+            <th class="min-tablet-p">資訊</th>
+            <th class="max-desktop" data-priority="3">課程名稱</th>
+            <th class="min-tablet-l">時間</th>
+            <th class="min-tablet-l">授課教師</th>
+            <th class="min-tablet-p">選課餘額</th>
+            <th class="desktop">課程代碼</th>
+            <th class="desktop">學分</th>
+            <th class="desktop">課程類別</th>
+            <th class="desktop">開課系級</th>
       </tr>
     </thead>
     <tbody>
@@ -46,7 +45,12 @@
 
         <div class="btn-group" role="group" aria-label="Basic example">
           <button type="button" id="deltraceSubmit" class="btn btn-outline-primary" @click="deltra(course.op_code,$event)">取消</button>
-          <button type="button" id="deltraceSubmit" class="btn btn-primary" @click="reg(course.op_code,$event)" >登記</button>
+          <div v-if="$store.stagecode==6">
+              <button type="button" class="btn btn-primary" @click="reg(course.op_code,$event)">登記</button>
+            </div>
+            <div v-if="$store.stagecode==3">
+              <button type="button" class="btn btn-primary" @click="addcou(course.op_code,$event)">加選</button>
+            </div>
         </div>
         </td>
         <td>
@@ -58,14 +62,13 @@
           </a>
         </td>
         <td>{{course.cname}}</td>
-        <td>{{course.op_time_1}}&nbsp;{{course.op_time_2}}&nbsp;{{course.op_time_3}}</td>
-        <td>{{course.teacher}}</td>
-        <td>{{course.act_remain}}</td>
-        <td>{{course.op_man}}</td>
-        <td>{{course.op_code}}</td>
-        <td>{{course.op_credit}}</td>
-        <td>{{course.op_type}}</td>
-        <td>{{course.mg_dept_name}}</td>
+            <td>{{course.op_time_1}}&nbsp;{{course.op_time_2}}&nbsp;{{course.op_time_3}}</td>
+            <td>{{course.teacher}}</td>
+            <td>{{course.act_remain}}&nbsp;/&nbsp;{{course.op_man}}</td>
+            <td>{{course.op_code}}</td>
+            <td>{{course.op_credit}}</td>
+            <td>{{course.op_type}}</td>
+            <td>{{course.dept_name}}</td>
       </tr>
     </tbody>
   </table>
@@ -84,9 +87,7 @@ export default {
     axios.get('http://127.0.0.1:5000/tracelist',
     {headers:{'Page-Id':this.$store.pageid},withCredentials: true})
     .then(response => {
-      // JSON responses are automatically parsed.
       this.courses = response.data
-      
     }).then(function(event){
       jQuery(document).ready(function() {
         jQuery('#example').DataTable({
@@ -124,7 +125,7 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
             orderable: false,
             targets:[1,2]
           } ],
-          order: [[ 3, 'asc' ]],
+          order: [[ 7, 'asc' ]],
           "pagingType": "full",
           "language": {
             "processing":   "處理中...",
@@ -163,7 +164,19 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
         {
           jQuery.notify({
             title: "<strong>已登記</strong>: ",
-            message: response.data.data.op_code+response.data.data.cname
+            message: "<br>"+response.data.data.op_code+"</br>"+
+            response.data.data.cname
+          },{
+            type: 'success'
+          });
+        }
+        else
+        {
+          jQuery.notify({
+            title: "<strong>失敗</strong>: ",
+            message: "<br>"+response.data.message+"</br>"
+          },{
+            type: 'danger'
           });
         }
       }
@@ -178,14 +191,28 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
       {
         if(response.data.result==true)
         {
-          jQuery.notify(
-            "<strong>已取消追蹤</strong>"
-          );
+          jQuery.notify({
+            title: "<strong>已取消追蹤</strong>",
+            message:""
+            }
+          ,{
+            type: 'success'
+          });
           axios.get('http://127.0.0.1:5000/tracelist',
           {headers:{'Page-Id':this.$store.pageid},withCredentials: true})
           .then(response => {
-            this.courses = response.data
+            this.courses = response.data;
+            this.$router.push('/tmp')
           })
+        }
+        else
+        {
+          jQuery.notify({
+            title: "<strong>失敗</strong>: ",
+            message: "<br>"+response.data.message+"</br>"
+          },{
+            type: 'danger'
+          });
         }
       }
       )
