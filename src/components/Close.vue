@@ -18,7 +18,7 @@ import axios from 'axios'
 export default {
   name: 'Close',
   created() {
-    axios.get('http://127.0.0.1:5000/stage')
+    axios.get('http://'+this.$store.ip+'/stage')
     .then(response => {
       // JSON responses are automatically parsed.
       this.stage = response.data

@@ -20,7 +20,7 @@ export default {
   },
   created() {
     this.pulse();
-    axios.get('http://127.0.0.1:5000/stage')
+    axios.get('http://'+this.$store.ip+'/stage')
     .then(response => {
       this.stage = response.data;
       for(var i=0;i<this.stage.datas.length;i++)

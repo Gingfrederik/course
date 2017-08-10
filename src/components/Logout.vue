@@ -20,7 +20,7 @@ axios.defaults.withCredentials = true;
 export default {
   name: 'Logout',
   created() {
-      axios.get('http://127.0.0.1:5000/logout',
+      axios.get('http://'+this.$store.ip+'/logout',
       {headers:{'Page-Id':this.id},withCredentials: true})
       .then(response=>{
         this.$store.pageid='';

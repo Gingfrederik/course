@@ -84,7 +84,7 @@ import qs from 'qs'
 export default {
   name: 'Search',
   created() {
-    axios.get('http://127.0.0.1:5000/tracelist',
+    axios.get('http://'+this.$store.ip+'/tracelist',
     {headers:{'Page-Id':this.$store.pageid},withCredentials: true})
     .then(response => {
       this.courses = response.data
@@ -155,7 +155,7 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
   methods: {
     reg: function(opcode,event){
       console.log(this.id);
-      axios.post('http://127.0.0.1:5000/addregister',
+      axios.post('http://'+this.$store.ip+'/addregister',
       qs.stringify({'opcode':opcode}),
       {headers:{'Page-Id':this.id},withCredentials: true})
       .then(response=>
@@ -184,7 +184,7 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
     },
     deltra: function(opcode,event){
       console.log(this.id);
-      axios.post('http://127.0.0.1:5000/deltrace',
+      axios.post('http://'+this.$store.ip+'/deltrace',
       qs.stringify({'opcode':opcode}),
       {headers:{'Page-Id':this.id},withCredentials: true})
       .then(response=>
@@ -198,7 +198,7 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
           ,{
             type: 'success'
           });
-          axios.get('http://127.0.0.1:5000/tracelist',
+          axios.get('http://'+this.$store.ip+'/tracelist',
           {headers:{'Page-Id':this.$store.pageid},withCredentials: true})
           .then(response => {
             this.courses = response.data;

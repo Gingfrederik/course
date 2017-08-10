@@ -464,7 +464,7 @@
         jQuery(":radio").prop('checked', false).parent().removeClass('active');
         this.clear();
         this.gotcou.dept_code = this.$store.student.stmd_cur_dpt;
-        axios.post('http://127.0.0.1:5000/course',
+        axios.post('http://'+this.$store.ip+'/course',
           qs.stringify(this.gotcou),
           { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
           .then(response => {
@@ -476,7 +476,7 @@
           })
       },
       cou: function (cou, event) {
-        axios.post('http://127.0.0.1:5000/course',
+        axios.post('http://'+this.$store.ip+'/course',
           qs.stringify(this.gotcou),
           { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
           .then(response => {
@@ -488,7 +488,7 @@
       },
       reg: function (opcode, event) {
         console.log(this.id);
-        axios.post('http://127.0.0.1:5000/addregister',
+        axios.post('http://'+this.$store.ip+'/addregister',
           qs.stringify({ 'opcode': opcode }),
           { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
           .then(response => {
@@ -514,7 +514,7 @@
       },
       tra: function (opcode, event) {
         console.log(this.id);
-        axios.post('http://127.0.0.1:5000/addtrace',
+        axios.post('http://'+this.$store.ip+'/addtrace',
           qs.stringify({ 'opcode': opcode }),
           { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
           .then(response => {
@@ -532,7 +532,7 @@
       },
       addcou: function (opcode, event) {
         console.log(this.id);
-        axios.post('http://127.0.0.1:5000/addgot',
+        axios.post('http://'+this.$store.ip+'/addgot',
           qs.stringify({ 'opcode': opcode }),
           { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
           .then(response => {

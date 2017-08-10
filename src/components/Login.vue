@@ -28,7 +28,7 @@
     name: 'Login',
     methods: {
       hash: function (event) {
-        axios.get('http://127.0.0.1:5000/login_init', { withCredentials: true })
+        axios.get('http://'+this.$store.ip+'/login_init', { withCredentials: true })
           .then(response => {
             this.loginstatus = response.data.result
             if (this.loginstatus) {
@@ -52,7 +52,7 @@
           })
           .then(() => {
             if (this.loginstatus) {
-              axios.post('http://127.0.0.1:5000/login',
+              axios.post('http://'+this.$store.ip+'/login',
                 qs.stringify({
                   'idcode': this.$store.idcode,
                   'hash': this.hashout
@@ -64,14 +64,14 @@
                   console.log(response.data.result)
                   if (response.data.result === true) {
                     this.$store.loginstatus = true
-                    axios.get('http://127.0.0.1:5000/content',
+                    axios.get('http://'+this.$store.ip+'/content',
                       { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
                       .then(response => {
                         console.log(response.data)
                         this.$store.student = response.data
                       })
                       .then(() => {
-                        axios.post('http://127.0.0.1:5000/course',
+                        axios.post('http://'+this.$store.ip+'/course',
                           qs.stringify({ 'dept_code': this.$store.student.stmd_cur_dpt }),
                           { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
                           .then(response => {

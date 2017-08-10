@@ -78,7 +78,7 @@ import qs from 'qs'
 export default {
   name: 'Search',
   created() {
-    axios.post('http://127.0.0.1:5000/gotlist',
+    axios.post('http://'+this.$store.ip+'/gotlist',
     qs.stringify({'idcode':this.$store.idcode}),
     {headers:{'Page-Id':this.$store.pageid},withCredentials: true})
     .then(response => {
@@ -152,7 +152,7 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
   methods: {
     delgot: function(opcode,event){
       console.log(this.id);
-      axios.post('http://127.0.0.1:5000/delgot',
+      axios.post('http://'+this.$store.ip+'/delgot',
       qs.stringify({'opcode':opcode}),
       {headers:{'Page-Id':this.id},withCredentials: true})
       .then(response=>
@@ -166,7 +166,7 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
           },{
             type: 'success'
           });
-      axios.post('http://127.0.0.1:5000/gotlist',
+      axios.post('http://'+this.$store.ip+'/gotlist',
       qs.stringify({'idcode':this.$store.idcode}),
       {headers:{'Page-Id':this.$store.pageid},withCredentials: true})
       .then(response => {
