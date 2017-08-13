@@ -48,10 +48,10 @@
         </div>
         </td>
         <td>
-          <a target = "_blank" :href="'https://cmap.cycu.edu.tw:8080/Syllabus/CoursePreview.html?yearTerm='+yearTerm+'&opCode='+course.OP_CODE">
+          <a target = "_blank" :href="'http://cmap.cycu.edu.tw:8080/Syllabus/CoursePreview.html?yearTerm='+yearTerm+'&opCode='+course.OP_CODE">
             <i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>
           </a>
-          <a target = "_blank" :href="'httpss://coursewiki.clouder.today/courses/'+course.OP_CODE">
+          <a target = "_blank" :href="'https://coursewiki.clouder.today/courses/'+course.OP_CODE">
             <i class="fa fa-question-circle fa-2x" aria-hidden="true"></i>
           </a>
         </td>
@@ -157,8 +157,7 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
         {
           jQuery.notify({
             title: "<strong>已取消登記</strong>: ",
-            message: "<br>"+response.data.data.op_code+"</br>"+
-            response.data.data.cname
+            message: ""
           },{
             type: 'success',
  placement: {

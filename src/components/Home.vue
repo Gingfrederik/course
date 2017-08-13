@@ -1,6 +1,14 @@
 <template>
   <main> 
   <div class="container">
+    <br><br>
+    <div class="alert alert-info" role="alert">
+      目前階段
+<strong>
+      <br>{{stage.datas[0].bgtime}}&nbsp;~&nbsp;{{stage.datas[0].edtime}}</br>
+<span style="white-space: pre-line">{{stage.datas[0].remark}}</span></strong>
+    </div>
+
     <div class="Aligner">
       <div class="Aligner-item">
         <div class="container">

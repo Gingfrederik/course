@@ -30,7 +30,8 @@ export default {
         var now = new Date();
         if(this.stage.datas[i].bgtime<=now && this.stage.datas[i].edtime>now)
         {
-          this.$store.stage = this.stage.datas[i].action_bits;
+          this.$store.stagecode = this.stage.datas[i].action_bits;
+	    console.log(this.$store.stagecode)
         }
       }
     })

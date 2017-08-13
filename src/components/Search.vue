@@ -339,19 +339,15 @@
             <td :data-id="course.op_code" v-model="course.op_code">
               <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-outline-primary" @click="tra(course.op_code,$event)">追蹤</button>
-                <div v-if="$store.stagecode==6">
-                  <button type="button" class="btn btn-primary" @click="reg(course.op_code,$event)">登記</button>
-                </div>
-                <div v-if="$store.stagecode==3">
-                  <button type="button" class="btn btn-primary" @click="addcou(course.op_code,$event)">加選</button>
-                </div>
+                  <button v-if="$store.stagecode==6" type="button" class="btn btn-primary" @click="reg(course.op_code,$event)">登記</button>
+                  <button v-if="$store.stagecode==3" type="button" class="btn btn-primary" @click="addcou(course.op_code,$event)">加選</button>
               </div>
             </td>
             <td>
-              <a target="_blank" :href="'https://cmap.cycu.edu.tw:8080/Syllabus/CoursePreview.html?yearTerm='+yearTerm+'&opCode='+course.op_code">
+              <a target="_blank" :href="'http://cmap.cycu.edu.tw:8080/Syllabus/CoursePreview.html?yearTerm='+yearTerm+'&opCode='+course.op_code">
                 <i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>
               </a>
-              <a target="_blank" :href="'httpss://coursewiki.clouder.today/courses/'+course.op_code">
+              <a target="_blank" :href="'https://coursewiki.clouder.today/courses/'+course.op_code">
                 <i class="fa fa-question-circle fa-2x" aria-hidden="true"></i>
               </a>
             </td>

@@ -48,10 +48,10 @@
         </div>
         </td>
         <td>
-          <a target = "_blank" :href="'https://cmap.cycu.edu.tw:8080/Syllabus/CoursePreview.html?yearTerm='+yearTerm+'&opCode='+course.op_code">
+          <a target = "_blank" :href="'http://cmap.cycu.edu.tw:8080/Syllabus/CoursePreview.html?yearTerm='+yearTerm+'&opCode='+course.op_code">
             <i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>
           </a>
-          <a target = "_blank" :href="'httpss://coursewiki.clouder.today/courses/'+course.op_code">
+          <a target = "_blank" :href="'https://coursewiki.clouder.today/courses/'+course.op_code">
             <i class="fa fa-question-circle fa-2x" aria-hidden="true"></i>
           </a>
         </td>
