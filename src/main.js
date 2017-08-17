@@ -13,6 +13,9 @@ new Vue({
   el: '#app',
   data: {
     store: {
+      crush:true,
+      coutime:null,
+      gotcou:null,
       stagecode:'',
       student:null,
       idcode:'',

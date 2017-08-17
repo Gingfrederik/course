@@ -60,8 +60,6 @@ export default {
     return {
       dat: this.$store,
       stage:this.stage,
-      user_course:['EE336G','EE255G','EE360G','EE380E','GR189A',
-      'EE144A','GE286B','GE439B','EE367G','EE415G']
     }
   }
 }
@@ -70,12 +68,27 @@ export default {
 <style>
 @import url(//fonts.googleapis.com/earlyaccess/notosanstc.css);
 
+@media (max-width: 575px) { 
+  html {
+    font-size: 65%;
+  }
+ }
+
+@media (min-width: 576px) and (max-width: 768px) { 
+  html {
+    font-size: 80%;
+  }
+ }
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+main {
+    margin-top: 55px;
 }
 body {
   min-height: 100vh;

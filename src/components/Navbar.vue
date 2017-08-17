@@ -1,5 +1,5 @@
 <template>
-  <header class="navbar navbar-inverse bg-inverse navbar-toggleable-md bd-navbar">
+  <header class="navbar navbar-inverse fixed-top bg-inverse navbar-toggleable-md bd-navbar">
     <nav class="container">
       <div class="d-flex justify-content-between">
         <a class="navbar-brand" herf="/">選課系統</a>
@@ -10,33 +10,33 @@
       <div v-if="this.$store.loginstatus" class="collapse navbar-collapse" id="bd-main-nav">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a v-on:click="navbar" class="nav-link" href="#/search">課程查詢</a>
+            <router-link @click.native="navbar" class="nav-link" to="/search">課程查詢</router-link>
           </li>
           <li class="nav-item active">
-            <a v-on:click="navbar" class="nav-link" href="#/trace">追蹤清單</a>
+            <router-link @click.native="navbar" class="nav-link" to="/trace">追蹤清單</router-link>
           </li>
           <li class="nav-item active">
-            <a v-on:click="navbar" class="nav-link" href="#/register">登記清單</a>
+            <router-link @click.native="navbar" class="nav-link" to="/register">登記清單</router-link>
           </li>
           <li class="nav-item active">
-            <a v-on:click="navbar" class="nav-link" href="#/Got">修課清單</a>
+            <router-link @click.native="navbar" class="nav-link" to="/got">修課清單</router-link>
           </li>
           <li class="nav-item active">
-            <a v-on:click="navbar" class="nav-link" href="#/table">課程表</a>
+            <router-link @click.native="navbar" class="nav-link" to="/table">課程表</router-link>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a v-on:click="navbar" class="nav-link active" href="#/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> 登出</a></li>
+          <li><router-link @click.native="navbar" class="nav-link active" to="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> 登出</router-link></li>
         </ul>
       </div>
       <div v-else class="collapse navbar-collapse" id="bd-main-nav">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a v-on:click="navbar" class="nav-link" href="#">首頁</a>
+            <router-link @click.native="navbar" class="nav-link" to="/">首頁</router-link>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a v-on:click="navbar" class="nav-link active" href="?#/login"><i class="fa fa-user" aria-hidden="true"></i> 登入</a></li>
+          <li><router-link @click.native="navbar" class="nav-link active" to="/login"><i class="fa fa-user" aria-hidden="true"></i> 登入</router-link></li>
         </ul>
       </div>
     </nav>

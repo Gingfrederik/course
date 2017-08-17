@@ -17,6 +17,11 @@
         <h2>修課清單</h2>
       </div>
       <div class="col-md-4 col-sm-10">
+	<h5>
+        <span class="badge badge-info">
+	     目前學分:{{$store.student.credit_total}}/{{$store.student.max_limit}}
+        </span>
+	</h5>
       </div>
     </div>
   </div>
@@ -28,13 +33,14 @@
       <th class="control max-desktop" data-priority="1"></th>
             <th class="max-desktop" data-priority="2">選項</th>
             <th class="min-tablet-p">資訊</th>
-            <th class="max-desktop" data-priority="3">課程名稱</th>
+            <th class="max-desktop" data-priority="3">名稱</th>
             <th class="min-tablet-l">時間</th>
-            <th class="min-tablet-l">授課教師</th>
-            <th class="min-tablet-p">選課餘額</th>
-            <th class="desktop">課程代碼</th>
+            <th class="min-tablet-l">教師</th>
+            <th class="min-tablet-p">餘額</th>
+            <th class="desktop">總額</th>
+            <th class="max-desktop" data-priority="4">代碼</th>
             <th class="desktop">學分</th>
-            <th class="desktop">課程類別</th>
+            <th class="desktop">類別</th>
             <th class="desktop">開課系級</th>
       </tr>
     </thead>
@@ -49,16 +55,17 @@
         </td>
         <td>
           <a target = "_blank" :href="'http://cmap.cycu.edu.tw:8080/Syllabus/CoursePreview.html?yearTerm='+yearTerm+'&opCode='+course.op_code">
-            <i class="fa fa-info-circle fa-2x" aria-hidden="true"></i>
+            <i title="課綱" class="fa fa-info-circle fa-2x" aria-hidden="true"></i>
           </a>
           <a target = "_blank" :href="'https://coursewiki.clouder.today/courses/'+course.op_code">
-            <i class="fa fa-question-circle fa-2x" aria-hidden="true"></i>
+            <i title="選課大全" class="fa fa-question-circle fa-2x" aria-hidden="true"></i>
           </a>
         </td>
         <td>{{course.cname}}</td>
             <td>{{course.op_time_1}}&nbsp;{{course.op_time_2}}&nbsp;{{course.op_time_3}}</td>
             <td>{{course.teacher}}</td>
-            <td>{{course.act_remain}}&nbsp;/&nbsp;{{course.op_man}}</td>
+            <td>{{course.act_remain}}</td>
+	    <td>{{course.op_man}}</td>
             <td>{{course.op_code}}</td>
             <td>{{course.op_credit}}</td>
             <td>{{course.op_type}}</td>
@@ -121,7 +128,7 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
             orderable: false,
             targets:[1,2]
           } ],
-          order: [[ 7, 'asc' ]],
+          order: [[ 8, 'asc' ]],
           "pagingType": "full",
           "language": {
             "processing":   "處理中...",
@@ -172,8 +179,8 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
       qs.stringify({'idcode':this.$store.idcode}),
       {headers:{'Page-Id':this.$store.pageid},withCredentials: true})
       .then(response => {
+        this.$router.push('/tmp');
         this.courses = response.data;
-        this.$router.push('/tmp')
       })
         }
         else

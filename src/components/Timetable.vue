@@ -2,7 +2,25 @@
   <main> 
   <br></br>
   <div class="container">
-    <table class="table table-responsive table-bordered center-all">
+
+  <div id="table_header" class="container">
+    <div class="row justify-content-between">
+      <div class="col-md-4 col-sm-10">
+      </div>
+      <div class="col-md-4 col-sm-10">
+        <h2>課程表</h2>
+      </div>
+      <div class="col-md-4 col-sm-10">
+	<h5>
+        <span class="badge badge-info">
+	     目前學分:{{$store.student.credit_total}}/{{$store.student.max_limit}}
+        </span>
+	</h5>
+      </div>
+    </div>
+    </div>
+    <br></br>
+    <table class="table table-sm table-bordered center-all">
       <thead class="thead-inverse">
         <tr>
           <th colspan="2">時間&nbsp;/&nbsp;星期</th>
@@ -18,7 +36,7 @@
       <tbody>
         <tr v-for="time in ordtime" v-bind:class="[times[time].flag === 'B'?'table-active':'']">
           <th class="table-info" scope="row">{{ times[time].time }}</th>
-          <th class="table-info">{{ times[time].flag }}</th>
+          <th class="table-info" scope="row">{{ times[time].flag }}</th>
           <td>{{ times[time].datas.mon }}</td>
           <td>{{ times[time].datas.tue }}</td>
           <td>{{ times[time].datas.wed }}</td>
@@ -72,6 +90,7 @@ table.center-all td,th{
 table{
   table-layout:fixed;
 }
+
 td {
   min-width:100px;
   max-width:200px;

@@ -3,14 +3,27 @@
     <div class="Aligner">
       <div class="Aligner-item">
         <div class="container">
+<br></br>
+       <div class="alert alert-danger" role="alert">
+          <strong>
+            <span style="white-space: pre-line">請注意
+              本網站為第三方服務
+              不會紀錄任何使用者資訊
+              但您仍必須了解將帳號密碼交給第三方服務的風險
+              本網站將不會承擔任何密碼遺失或是選課問題之責任
+            </span>
+          </strong>
+        </div>
           <form class="form-signin">
             <h1 class="form-signin-heading">登入</h1>
             <label for="inputID" class="sr-only">學號</label>
             <input type="number" v-model="inid" class="form-control" placeholder="學號" required autofocus>
             <label for="inputPassword" class="sr-only">密碼</label>
             <input type="password" v-model="inpass" class="form-control" placeholder="密碼" required>
-            <button class="btn btn-lg btn-primary btn-block" @click="hash" type="submit">Login</button>
+            <button class="btn btn-lg btn-primary btn-block" @keyup.enter="hash" @click="hash" type="submit">Login</button>
           </form>
+<br></br>
+<br></br>
         </div>
       </div>
     </div>
@@ -26,28 +39,37 @@
 
   export default {
     name: 'Login',
-    methods: {
-      hash: function (event) {
+    created(){
         axios.get('https://'+this.$store.ip+'/login_init', { withCredentials: true })
           .then(response => {
             this.loginstatus = response.data.result;
             if (this.loginstatus) {
               this.$store.pageid = response.headers['securerandom']
             }
+            else {
+              this.$router.push('/close')
+            }
           })
-          .then(() => {
-            if (this.loginstatus) {
+    },
+    methods: {
+      hash: function (event) {
+                    jQuery.notify({
+                      message: "<strong>請稍等</strong>",
+                    }, {
+                        type: 'info',
+			placement: {
+                  from: "top",
+                  align: "center"
+                },  
+		    delay:1000,
+                      });
               var md5pass = CryptoJS.MD5(this.inpass).toString();
               var hashpass = CryptoJS.algo.HMAC.create(CryptoJS.algo.SHA256, md5pass);
               this.$store.idcode = this.inid;
               hashpass.update(this.inid);
               hashpass.update(this.$store.pageid);
               this.hashout = encodeURIComponent(hashpass.finalize());
-              this.inpass = null;
-            }
-          })
-          .then(() => {
-            if (this.loginstatus) {
+	      this.inpass = null;
               axios.post('https://'+this.$store.ip+'/login',
                 qs.stringify({
                   'idcode': this.$store.idcode,
@@ -56,6 +78,16 @@
                 { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
                 .then(response => {
                   if (response.data.result === true) {
+                    jQuery.notify({
+                      title: "<strong>成功</strong>: ",
+                      message: response.data.message
+                    }, {
+                        type: 'success',
+			placement: {
+                  from: "top",
+                  align: "center"
+                },  
+                      });
                     this.$store.loginstatus = true
                     axios.get('https://'+this.$store.ip+'/content',
                       { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
@@ -67,11 +99,22 @@
                           qs.stringify({ 'dept_code': this.$store.student.stmd_cur_dpt }),
                           { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
                           .then(response => {
-                            this.$store.courses = response.data.datas
+                            this.$store.courses = response.data.datas;
+			    this.$store.gotcou = this.gotcou;
+			    this.$store.gotcou.dept_code= this.$store.student.stmd_cur_dpt
+                          })
+                      .then(() => {
+                        axios.post('https://'+this.$store.ip+'/coutime',
+                          qs.stringify({ 'idcode': this.$store.idcode}),
+                          { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
+                          .then(response => {
+                            this.$store.coutime = response.data;
                           })
                           .then(() => {
                             this.$router.push('/search')
                           })
+                      }
+                      )
                       }
                       )
                   }
@@ -81,19 +124,24 @@
                       message: response.data.message
                     }, {
                         type: 'danger',
- placement: {
-                  from: "bottom",
-                  align: "right"
-                },  
+			placement: {
+			from: "bottom",
+			align: "right"
+			},  
                       });
-                  }
-                })
+        axios.get('https://'+this.$store.ip+'/login_init', { withCredentials: true })
+          .then(response => {
+            this.loginstatus = response.data.result;
+            if (this.loginstatus) {
+              this.$store.pageid = response.headers['securerandom']
             }
             else {
               this.$router.push('/close')
             }
           })
-      }
+		  }
+		})
+	    }
     },
     data: function () {
       return {
@@ -101,9 +149,64 @@
         inpass: '',
         hashout: '',
         loginstatus: null,
+        gotcou :{
+          "dept_code": "",
+          "cross_type": "",
+          "filter_remain": "",
+          "cname": "",
+          "op_quality": "",
+          "mg_dept_code": "",
+          "non_stop": "",
+          "op_code": "",
+          "op_credit": "",
+          "op_time_1": "",
+          "op_time_2": "",
+          "op_time_3": "",
+          "teacher": "",
+          "transfer_mark": "",
+          "filtered": "",
+          "act_man": "",
+          "design": "",
+          "bet_dept": "",
+          "reg_man": "",
+          "memo1": "",
+          "sn_course_type": "",
+          "filter_man": "",
+          "sex": "",
+          "last_reg_man": "",
+          "withdraw_bits": "",
+          "dept_name": "",
+          "upper_man": "",
+          "div_code": "",
+          "mg_dept_name": "",
+          "act_remain": "",
+          "op_stdy": "",
+          "first_man": "",
+          "course_time": [],
+          "op_type":
+          {
+            "a": "",
+            "b": "",
+            "b": "",
+            "d": "",
+            "e": "",
+            "f": "",
+            "g": "",
+            "h": "",
+            "i": "",
+            "j": "",
+            "k": "",
+            "l": "",
+            "m": "",
+            "n": "",
+	    },
+         "op_man": "",
+          "bet_bln": "",
+	    "coutime":""
       }
     }
   }
+}
 
 </script>
 
