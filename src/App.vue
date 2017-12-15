@@ -41,7 +41,7 @@ export default {
       console.log('pulse');
       if(this.$store.loginstatus==true)
       {
-        axios.post('https://127.0.0.1:5000/timelist',
+        axios.post('https://'+this.$store.ip+'/timelist',
         qs.stringify({'idcode':this.$store.idcode}),
         {headers:{'Page-Id':this.$store.pageid},
         withCredentials: true})

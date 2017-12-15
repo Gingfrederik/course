@@ -233,7 +233,7 @@ align: "right"
   data: function(){
     return {
       id:this.$store.pageid,
-      yearTerm:"1061",
+      yearTerm:this.$store.yearTerm,
       courses:this.courses
     }
   }

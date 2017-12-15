@@ -196,7 +196,7 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
   data: function(){
     return {
       id:this.$store.pageid,
-      yearTerm:"1061",
+      yearTerm:this.$store.yearTerm,
       courses:this.courses
     }
   }

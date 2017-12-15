@@ -13,6 +13,7 @@ new Vue({
   el: '#app',
   data: {
     store: {
+      yearTerm:"1062",
       crush:true,
       coutime:null,
       gotcou:null,
@@ -23,7 +24,7 @@ new Vue({
       cookie:'',
       pageid: '',
       courses:null,
-      ip:'idontknow.com.tw:8443',
+      ip:'course.geederik.tw:8443',
     }
   },
   render: h => h(App),

@@ -655,7 +655,7 @@
     data: function () {
       return {
         id: this.$store.pageid,
-        yearTerm: "1061",
+        yearTerm:this.$store.yearTerm,
         ordtime:['A','1','2','3','4','B','5','6','7','8','C','D','E','F','G'],
       }
     }
