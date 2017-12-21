@@ -332,7 +332,7 @@
             <th class="min-tablet-l">教師</th>
             <th class="min-tablet-p">餘額</th>
             <th class="desktop">總額</th>
-	    <th class="desktop">去年登記</th>
+            <th class="desktop">去年登記</th>
             <th class="max-desktop" data-priority="4">代碼</th>
             <th class="desktop">學分</th>
             <th class="desktop">類別</th>
@@ -345,8 +345,8 @@
             <td :data-id="course.op_code" v-model="course.op_code">
               <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-outline-primary btn-sm" @click="tra(course.op_code,$event)">追蹤</button>
-                  <button v-if="$store.stagecode==6" type="button" class="btn btn-primary btn-sm" @click="reg(course.op_code,$event)">登記</button>
-                  <button v-if="$store.stagecode==3" type="button" class="btn btn-primary btn-sm" @click="addcou(course.op_code,$event)">加選</button>
+                  <button v-if="stagecode==6" type="button" class="btn btn-primary btn-sm" @click="reg(course.op_code,$event)">登記</button>
+                  <button v-if="stagecode==3" type="button" class="btn btn-primary btn-sm" @click="addcou(course.op_code,$event)">加選</button>
               </div>
             </td>
             <td>
@@ -655,6 +655,7 @@
     data: function () {
       return {
         id: this.$store.pageid,
+        stagecode:this.$store.stagecode,
         yearTerm:this.$store.yearTerm,
         ordtime:['A','1','2','3','4','B','5','6','7','8','C','D','E','F','G'],
       }
