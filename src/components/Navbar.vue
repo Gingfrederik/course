@@ -7,7 +7,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
       </div>
-      <div v-if="this.$store.loginstatus" class="collapse navbar-collapse" id="bd-main-nav">
+      <div v-if="$store.loginstatus" class="collapse navbar-collapse" id="bd-main-nav">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <router-link @click.native="navbar" class="nav-link" to="/search">課程查詢</router-link>
