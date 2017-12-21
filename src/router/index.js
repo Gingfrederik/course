@@ -16,6 +16,7 @@ import Timetable from '../components/Timetable'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',

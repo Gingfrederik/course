@@ -20,7 +20,7 @@
           <input type="number" v-model="inid" class="form-control" placeholder="學號" required autofocus>
           <label for="inputPassword" class="sr-only">密碼</label>
           <input type="password" v-model="inpass" class="form-control" placeholder="密碼" required>
-          <button class="btn btn-lg btn-primary btn-block" @keyup.enter="hash" @click="hash" type="submit">Login</button>
+          <button class="btn btn-lg btn-primary btn-block" @keyup.enter="hash" @click="hash" type="button">Login</button>
         </form>
         <br></br>
         <br></br>
