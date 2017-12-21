@@ -343,10 +343,14 @@
           <tr v-for="course in $store.courses" :key="course.op_code">
             <td class="control"></td>
             <td :data-id="course.op_code" v-model="course.op_code">
-              <div class="btn-group" role="group" aria-label="Basic example">
+              <div  v-if="stagecode==6" class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-outline-primary btn-sm" @click="tra(course.op_code,$event)">追蹤</button>
-                  <button v-if="stagecode==6" type="button" class="btn btn-primary btn-sm" @click="reg(course.op_code,$event)">登記</button>
-                  <button v-if="stagecode==3" type="button" class="btn btn-primary btn-sm" @click="addcou(course.op_code,$event)">加選</button>
+                <button type="button" class="btn btn-primary btn-sm" @click="reg(course.op_code,$event)">登記</button>
+
+              </div>
+              <div  v-if="stagecode==3" class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-outline-primary btn-sm" @click="tra(course.op_code,$event)">追蹤</button>
+                <button v-if="stagecode==3" type="button" class="btn btn-primary btn-sm" @click="addcou(course.op_code,$event)">加選</button>
               </div>
             </td>
             <td>

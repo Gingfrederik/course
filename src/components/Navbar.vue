@@ -26,6 +26,7 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <li><a @click.native="navbar" class="nav-link active" target="_blank" href="https://www.facebook.com/cycucourse/"><i class="fa fa-facebook-square fa-1x" aria-hidden="true"></i> 粉絲專頁</a></li>
           <li><router-link @click.native="navbar" class="nav-link active" to="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> 登出</router-link></li>
         </ul>
       </div>
@@ -36,6 +37,7 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <li><a @click.native="navbar" class="nav-link active" target="_blank" href="https://www.facebook.com/cycucourse/"><i class="fa fa-facebook-square fa-1x" aria-hidden="true"></i> 粉絲專頁</a></li>
           <li><router-link @click.native="navbar" class="nav-link active" to="/login"><i class="fa fa-user" aria-hidden="true"></i> 登入</router-link></li>
         </ul>
       </div>
