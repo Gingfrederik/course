@@ -329,7 +329,7 @@
         <th class="control max-desktop" data-priority="1"></th>
         <th class="max-desktop" data-priority="2">選項</th>
         <th class="min-tablet-p">資訊</th>
-        <th class="max-desktop" data-priority="3">名稱</th>
+        <th class="max-desktop" data-priority="3">(跨)名稱</th>
         <th class="min-tablet-l">時間</th>
         <th class="min-tablet-l">教師</th>
         <th class="min-tablet-p">餘額</th>
@@ -390,6 +390,9 @@ import qs from 'qs'
 export default {
   name: 'Search',
   created() {
+    if(!(this.$store.loginstatus)){
+      this.$router.push("/")
+    };
     jQuery(document).ready(function () {
       jQuery('#example').DataTable({
         "iDisplayLength": 100,
@@ -451,7 +454,6 @@ export default {
         }
       })
     })
-  //})
 },
 methods: {
   refresh: function(){

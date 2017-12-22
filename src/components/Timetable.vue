@@ -61,6 +61,9 @@ axios.defaults.withCredentials = true;
 export default {
   name: 'Home',
   created() {
+    if(!(this.$store.loginstatus)){
+      this.$router.push("/")
+    };
     axios.post('https://'+this.$store.ip+'/timelist',
     qs.stringify({'idcode':this.$store.idcode}),
     {headers:{'Page-Id':this.$store.pageid},

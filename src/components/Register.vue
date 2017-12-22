@@ -80,6 +80,9 @@ import qs from 'qs'
 export default {
   name: 'Search',
   created() {
+    if(!(this.$store.loginstatus)){
+      this.$router.push("/")
+    };
     axios.post('https://'+this.$store.ip+'/registerlist',
     qs.stringify({'idcode':this.$store.idcode}),
     {headers:{'Page-Id':this.$store.pageid},withCredentials: true})

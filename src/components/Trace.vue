@@ -87,6 +87,9 @@ import qs from 'qs'
 export default {
   name: 'Search',
   created() {
+    if(!(this.$store.loginstatus)){
+      this.$router.push("/")
+    };
     axios.get('https://'+this.$store.ip+'/tracelist',
     {headers:{'Page-Id':this.$store.pageid},withCredentials: true})
     .then(response => {
