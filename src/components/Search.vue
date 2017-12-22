@@ -336,6 +336,7 @@
         <th class="max-desktop" data-priority="4">代碼</th>
         <th class="desktop">學分</th>
         <th class="desktop">類別</th>
+        <th class="desktop">跨</th>
         <th class="desktop">開課系級</th>
       </tr>
     </thead>
@@ -372,6 +373,8 @@
         <td>{{course.op_code}}</td>
         <td>{{course.op_credit}}</td>
         <td>{{course.op_type}}</td>
+        <td v-if="course.cross_type"><i class="fa fa-check" aria-hidden="true"></i></td>
+        <td v-else></td>
         <td>{{course.dept_name}}</td>
       </tr>
     </tbody>
