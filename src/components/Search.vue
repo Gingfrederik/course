@@ -351,6 +351,9 @@
             <button type="button" class="btn btn-outline-primary btn-sm" @click="tra(course.op_code,$event)">追蹤</button>
             <button type="button" class="btn btn-primary btn-sm" @click="addcou(course.op_code,$event)">加選</button>
           </div>
+          <div v-else class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-outline-primary btn-sm" @click="tra(course.op_code,$event)">追蹤</button>
+          </div>
         </td>
         <td>
           <a target = "_blank" :href="'http://cmap.cycu.edu.tw:8080/Syllabus/CoursePreview.html?yearTerm='+yearTerm+'&opCode='+course.op_code">
