@@ -4,15 +4,25 @@
     <br><br>
     <div class="alert alert-info" role="alert">
       目前階段
-<strong>
-      <br>{{stage.datas[0].bgtime}}&nbsp;~&nbsp;{{stage.datas[0].edtime}}</br>
-<span style="white-space: pre-line">{{stage.datas[0].remark}}</span></strong>
+      <strong>
+        <br>
+        {{stage.datas[0].bgtime}}&nbsp;~&nbsp;{{stage.datas[0].edtime}}
+        </br>
+        <span style="white-space: pre-line">{{stage.datas[0].remark}}</span>
+      </strong>
     </div>
 
     <div class="Aligner">
       <div class="Aligner-item">
         <div class="container">
           <h1>選課系統</h1> 
+        </div>
+        <div class="container">
+          <router-link to="/login">
+            <button type="button" class="btn btn-success btn-lg">
+              <i class="fa fa-user" aria-hidden="true"></i> 登入
+            </button>
+          </router-link>
         </div>
       </div>
     </div>

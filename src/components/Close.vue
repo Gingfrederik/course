@@ -22,6 +22,7 @@ export default {
     .then(response => {
       // JSON responses are automatically parsed.
       this.stage = response.data
+      setTimeout(()=>{this.$router.push('/')},300);
   })},
   data: function(){
     return {
