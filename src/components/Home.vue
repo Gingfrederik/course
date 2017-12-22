@@ -18,10 +18,8 @@
           <h1>選課系統</h1> 
         </div>
         <div class="container">
-          <router-link to="/login">
-            <button type="button" class="btn btn-success btn-lg">
+            <router-link to="/login" tag="button" type="button" class="btn btn-success btn-lg">
               <i class="fa fa-user" aria-hidden="true"></i> 登入
-            </button>
           </router-link>
         </div>
       </div>

@@ -2,7 +2,7 @@
   <header class="navbar navbar-inverse fixed-top bg-inverse navbar-toggleable-md bd-navbar">
     <nav class="container">
       <div class="d-flex justify-content-between">
-        <a class="navbar-brand" herf="/">選課系統</a>
+        <a class="navbar-brand">選課系統</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bd-main-nav" aria-controls="bd-main-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
