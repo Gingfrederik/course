@@ -23,7 +23,7 @@
     <table class="table table-sm table-bordered center-all">
       <thead class="thead-inverse">
         <tr>
-          <th colspan="2">時間&nbsp;/&nbsp;星期</th>
+          <th>時間&nbsp;/&nbsp;星期</th>
           <th>星期一</th>
           <th>星期二</th>
           <th>星期三</th>
@@ -35,15 +35,14 @@
       </thead>
       <tbody>
         <tr v-for="time in ordtime" v-bind:class="[times[time].flag === 'B'?'table-active':'']">
-          <th class="table-info" scope="row">{{ times[time].time }}</th>
-          <th class="table-info" scope="row">{{ times[time].flag }}</th>
-          <td>{{ times[time].datas.mon }}</td>
-          <td>{{ times[time].datas.tue }}</td>
-          <td>{{ times[time].datas.wed }}</td>
-          <td>{{ times[time].datas.thu }}</td>
-          <td>{{ times[time].datas.fri }}</td>
-          <td>{{ times[time].datas.sat }}</td>
-          <td>{{ times[time].datas.sun }}</td>
+          <th class="table-info" scope="row"><font style="color:gray">{{ times[time].time }}</font>&nbsp;&nbsp;{{ times[time].flag }}</th>
+          <td>{{ times[time].datas.mon.course }}<br><font style="color:gray">{{ times[time].datas.mon.room }}</font></td>
+          <td>{{ times[time].datas.tue.course }}<br><font style="color:gray">{{ times[time].datas.tue.room }}</font></td>
+          <td>{{ times[time].datas.wed.course }}<br><font style="color:gray">{{ times[time].datas.wed.room }}</font></td>
+          <td>{{ times[time].datas.thu.course }}<br><font style="color:gray">{{ times[time].datas.thu.room }}</font></td>
+          <td>{{ times[time].datas.fri.course }}<br><font style="color:gray">{{ times[time].datas.fri.room }}</font></td>
+          <td>{{ times[time].datas.sat.course }}<br><font style="color:gray">{{ times[time].datas.sat.room }}</font></td>
+          <td>{{ times[time].datas.sun.course }}<br><font style="color:gray">{{ times[time].datas.sun.room }}</font></td>
         </tr>
       </tbody>
     </table>
@@ -64,7 +63,7 @@ export default {
     if(!(this.$store.loginstatus)){
       this.$router.push("/")
     };
-    axios.post('https://'+this.$store.ip+'/timelist',
+    axios.post(this.$store.ip+'/timelist',
     qs.stringify({'idcode':this.$store.idcode}),
     {headers:{'Page-Id':this.$store.pageid},
     withCredentials: true})

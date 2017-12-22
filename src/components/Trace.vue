@@ -90,7 +90,7 @@ export default {
     if(!(this.$store.loginstatus)){
       this.$router.push("/")
     };
-    axios.get('https://'+this.$store.ip+'/tracelist',
+    axios.get(this.$store.ip+'/tracelist',
     {headers:{'Page-Id':this.$store.pageid},withCredentials: true})
     .then(response => {
       this.courses = response.data
@@ -160,7 +160,7 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
   },
   methods: {
     reg: function(opcode,event){
-      axios.post('https://'+this.$store.ip+'/addregister',
+      axios.post(this.$store.ip+'/addregister',
       qs.stringify({'opcode':opcode}),
       {headers:{'Page-Id':this.id},withCredentials: true})
       .then(response=>
@@ -196,7 +196,7 @@ align: "right"
       )
     },
     deltra: function(opcode,event){
-      axios.post('https://'+this.$store.ip+'/deltrace',
+      axios.post(this.$store.ip+'/deltrace',
       qs.stringify({'opcode':opcode}),
       {headers:{'Page-Id':this.id},withCredentials: true})
       .then(response=>
@@ -214,7 +214,7 @@ align: "right"
                   align: "right"
                 },  
           });
-          axios.get('https://'+this.$store.ip+'/tracelist',
+          axios.get(this.$store.ip+'/tracelist',
           {headers:{'Page-Id':this.$store.pageid},withCredentials: true})
           .then(response => {
             this.$router.push('/tmp');

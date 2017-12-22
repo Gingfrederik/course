@@ -465,7 +465,7 @@ methods: {
     {
       this.$store.gotcou.coutime = null
     }
-    axios.post('https://'+this.$store.ip+'/course',
+    axios.post(this.$store.ip+'/course',
     qs.stringify(this.$store.gotcou),
     { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
     .then(response => {
@@ -486,7 +486,7 @@ methods: {
       this.$store.gotcou.coutime = null
     }
     this.$store.gotcou.dept_code = this.$store.student.stmd_cur_dpt;
-    axios.post('https://'+this.$store.ip+'/course',
+    axios.post(this.$store.ip+'/course',
     qs.stringify(this.$store.gotcou),
     { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
     .then(response => {
@@ -504,7 +504,7 @@ methods: {
     {
       this.$store.gotcou.coutime = null
     }
-    axios.post('https://'+this.$store.ip+'/course',
+    axios.post(this.$store.ip+'/course',
     qs.stringify(this.$store.gotcou),
     { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
     .then(response => {
@@ -513,7 +513,7 @@ methods: {
     })
   },
   reg: function (opcode, event) {
-    axios.post('https://'+this.$store.ip+'/addregister',
+    axios.post(this.$store.ip+'/addregister',
     qs.stringify({ 'opcode': opcode }),
     { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
     .then(response => {
@@ -546,7 +546,7 @@ methods: {
     )
   },
   tra: function (opcode, event) {
-    axios.post('https://'+this.$store.ip+'/addtrace',
+    axios.post(this.$store.ip+'/addtrace',
     qs.stringify({ 'opcode': opcode }),
     { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
     .then(response => {
@@ -567,7 +567,7 @@ methods: {
     )
   },
   addcou: function (opcode, event) {
-    axios.post('https://'+this.$store.ip+'/addgot',
+    axios.post(this.$store.ip+'/addgot',
     qs.stringify({ 'opcode': opcode }),
     { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
     .then(response => {

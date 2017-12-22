@@ -40,7 +40,7 @@ axios.defaults.withCredentials = true;
 export default {
   name: 'Login',
   created(){
-    axios.get('https://'+this.$store.ip+'/login_init', { withCredentials: true })
+    axios.get(this.$store.ip+'/login_init', { withCredentials: true })
     .then(response => {
       this.loginstatus = response.data.result;
       if (this.loginstatus) {
@@ -70,7 +70,7 @@ export default {
       hashpass.update(this.$store.pageid);
       this.hashout = encodeURIComponent(hashpass.finalize());
       this.inpass = null;
-      axios.post('https://'+this.$store.ip+'/login',
+      axios.post(this.$store.ip+'/login',
       qs.stringify({
         'idcode': this.$store.idcode,
         'hash': this.hashout
@@ -89,13 +89,13 @@ export default {
             },  
           });
           this.$store.loginstatus = true
-          axios.get('https://'+this.$store.ip+'/content',
+          axios.get(this.$store.ip+'/content',
           { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
           .then(response => {
             this.$store.student = response.data
           })
           .then(() => {
-            axios.post('https://'+this.$store.ip+'/course',
+            axios.post(this.$store.ip+'/course',
             qs.stringify({ 'dept_code': this.$store.student.stmd_cur_dpt }),
             { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
             .then(response => {
@@ -104,7 +104,7 @@ export default {
               this.$store.gotcou.dept_code= this.$store.student.stmd_cur_dpt
             })
             .then(() => {
-              axios.post('https://'+this.$store.ip+'/coutime',
+              axios.post(this.$store.ip+'/coutime',
               qs.stringify({ 'idcode': this.$store.idcode}),
               { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
               .then(response => {
@@ -129,7 +129,7 @@ export default {
               align: "right"
             },  
           });
-          axios.get('https://'+this.$store.ip+'/login_init', { withCredentials: true })
+          axios.get(this.$store.ip+'/login_init', { withCredentials: true })
           .then(response => {
             this.loginstatus = response.data.result;
             if (this.loginstatus) {

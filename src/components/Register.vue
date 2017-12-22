@@ -83,7 +83,7 @@ export default {
     if(!(this.$store.loginstatus)){
       this.$router.push("/")
     };
-    axios.post('https://'+this.$store.ip+'/registerlist',
+    axios.post(this.$store.ip+'/registerlist',
     qs.stringify({'idcode':this.$store.idcode}),
     {headers:{'Page-Id':this.$store.pageid},withCredentials: true})
     .then(response => {
@@ -154,7 +154,7 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
   },
   methods: {
     delreg: function(opcode,event){
-      axios.post('https://'+this.$store.ip+'/delregister',
+      axios.post(this.$store.ip+'/delregister',
       qs.stringify({'opcode':opcode}),
       {headers:{'Page-Id':this.id},withCredentials: true})
       .then(response=>
@@ -171,7 +171,7 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
                   align: "right"
                 },  
           });
-          axios.post('https://'+this.$store.ip+'/registerlist',
+          axios.post(this.$store.ip+'/registerlist',
           qs.stringify({'idcode':this.$store.idcode}),
           {headers:{'Page-Id':this.$store.pageid},withCredentials: true})
           .then(response => {

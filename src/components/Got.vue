@@ -88,7 +88,7 @@ export default {
     if(!(this.$store.loginstatus)){
       this.$router.push("/")
     };
-    axios.post('https://'+this.$store.ip+'/gotlist',
+    axios.post(this.$store.ip+'/gotlist',
     qs.stringify({'idcode':this.$store.idcode}),
     {headers:{'Page-Id':this.$store.pageid},withCredentials: true})
     .then(response => {
@@ -160,7 +160,7 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
   },
   methods: {
     delgot: function(opcode,event){
-      axios.post('https://'+this.$store.ip+'/delgot',
+      axios.post(this.$store.ip+'/delgot',
       qs.stringify({'opcode':opcode}),
       {headers:{'Page-Id':this.id},withCredentials: true})
       .then(response=>
@@ -178,7 +178,7 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
                   align: "right"
                 },  
           });
-      axios.post('https://'+this.$store.ip+'/gotlist',
+      axios.post(this.$store.ip+'/gotlist',
       qs.stringify({'idcode':this.$store.idcode}),
       {headers:{'Page-Id':this.$store.pageid},withCredentials: true})
       .then(response => {

@@ -20,7 +20,7 @@ export default {
   },
   created() {
     this.pulse();
-    axios.get('https://'+this.$store.ip+'/stage')
+    axios.get(this.$store.ip+'/stage')
     .then(response => {
       this.stage = response.data;
       for(var i=0;i<this.stage.datas.length;i++)
@@ -41,7 +41,7 @@ export default {
       console.log('pulse');
       if(this.$store.loginstatus==true)
       {
-        axios.post('https://'+this.$store.ip+'/timelist',
+        axios.post(this.$store.ip+'/timelist',
         qs.stringify({'idcode':this.$store.idcode}),
         {headers:{'Page-Id':this.$store.pageid},
         withCredentials: true})
