@@ -44,10 +44,13 @@
         <td></td>
         <td>
 
-        <div class="btn-group" role="group" aria-label="Basic example">
+        <div v-if="$store.stagecode==6" class="btn-group" role="group" aria-label="Basic example">
           <button type="button" id="deltraceSubmit" class="btn btn-outline-primary btn-sm" @click="deltra(course.op_code,$event)">取消</button>
-              <button v-if="$store.stagecode==6" type="button" class="btn btn-primary btn-sm" @click="reg(course.op_code,$event)">登記</button>
-              <button v-if="$store.stagecode==3" type="button" class="btn btn-primary btn-sm" @click="addcou(course.op_code,$event)">加選</button>
+          <button type="button" class="btn btn-primary btn-sm" @click="reg(course.op_code,$event)">登記</button>
+        </div>
+        <div v-if="$store.stagecode==3" class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" id="deltraceSubmit" class="btn btn-outline-primary btn-sm" @click="deltra(course.op_code,$event)">取消</button>
+          <button type="button" class="btn btn-primary btn-sm" @click="addcou(course.op_code,$event)">加選</button>
         </div>
         </td>
         <td>
