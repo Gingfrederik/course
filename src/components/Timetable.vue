@@ -23,7 +23,7 @@
     <table class="table table-sm table-bordered center-all">
       <thead class="thead-inverse">
         <tr>
-          <th>時間&nbsp;/&nbsp;星期</th>
+          <th colspan="2">時間&nbsp;/&nbsp;星期</th>
           <th>星期一</th>
           <th>星期二</th>
           <th>星期三</th>
@@ -35,7 +35,8 @@
       </thead>
       <tbody>
         <tr v-for="time in ordtime" v-bind:class="[times[time].flag === 'B'?'table-active':'']">
-          <th class="table-info" scope="row"><font style="color:gray">{{ times[time].time }}</font>&nbsp;&nbsp;{{ times[time].flag }}</th>
+          <th class="table-info" scope="row"><font style="color:gray">{{ times[time].time }}</font></th>
+          <th class="table-info" scope="row">{{ times[time].flag }}</th>
           <td>{{ times[time].datas.mon.course }}<br><font style="color:gray">{{ times[time].datas.mon.room }}</font></td>
           <td>{{ times[time].datas.tue.course }}<br><font style="color:gray">{{ times[time].datas.tue.room }}</font></td>
           <td>{{ times[time].datas.wed.course }}<br><font style="color:gray">{{ times[time].datas.wed.room }}</font></td>
