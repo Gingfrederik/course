@@ -4,7 +4,7 @@
     <br><br>
     <div class="alert alert-info" role="alert">
       目前階段
-      <strong>
+      <strong v-if="stage!=null">
         <br>
         {{stage.datas[0].bgtime}}&nbsp;~&nbsp;{{stage.datas[0].edtime}}
         </br>
@@ -43,7 +43,7 @@ export default {
   })},
   data: function(){
     return {
-      stage:this.stage
+      stage:null
     }
   }
 }
