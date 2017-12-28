@@ -6,11 +6,11 @@
     <div class="row justify-content-between">
       <div class="col-md-4 col-sm-10">
         <h5>
-        <span class="badge badge-pill badge-default">
-          <i class="fa fa-info-circle" aria-hidden="true">&nbsp;課綱</i>
-          &nbsp;
-          <i class="fa fa-question-circle" aria-hidden="true">&nbsp;選課大全</i>
-        </span>
+          <span class="badge badge-pill badge-default">
+            <i class="fa fa-info-circle" aria-hidden="true">&nbsp;課綱</i>
+            &nbsp;
+            <i class="fa fa-question-circle" aria-hidden="true">&nbsp;選課大全</i>
+          </span>
         </h5>
       </div>
       <div class="col-md-4 col-sm-10">
@@ -44,9 +44,9 @@
         <td></td>
         <td>
 
-        <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" class="btn btn-outline-primary" @click="delreg(course.op_code,$event)" >取消</button>
-        </div>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-outline-primary" @click="delreg(course.op_code,$event)" >取消</button>
+          </div>
         </td>
         <td>
           <a target = "_blank" :href="'https://cmap.cycu.edu.tw:8080/Syllabus/CoursePreview.html?yearTerm='+yearTerm+'&opCode='+course.OP_CODE">
@@ -79,65 +79,65 @@ import qs from 'qs'
 export default {
   name: 'Search',
   created() {
-      jQuery(document).ready(function() {
-        jQuery('#example').DataTable({
-          responsive: {
-            details: {
-              display: jQuery.fn.dataTable.Responsive.display.modal( {
-                header: function ( row ) {
-                  var data = row.data();
-return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {margin:0 auto;}</style>'
-                }
-              } ),
-              renderer: jQuery.fn.dataTable.Responsive.renderer.tableAll( {
-                tableClass: 'table'
-              } )            
-            }
-
-          },   
-          columnDefs: [ {
-            className: 'control',
-            orderable: false,
-            targets:0
-          },
-          {
-            orderable: false,
-            targets:[1,2]
-          } ],
-          order: [[ 3, 'asc' ]],
-          "pagingType": "full",
-          "language": {
-            "processing":   "處理中...",
-            "loadingRecords": "載入中...",
-            "lengthMenu":   "顯示 _MENU_ 項結果",
-            "zeroRecords":  "沒有符合的結果",
-            "info":         "顯示第 _START_ 至 _END_ 項結果，共 _TOTAL_ 項",
-            "infoEmpty":    "顯示第 0 至 0 項結果，共 0 項",
-            "infoFiltered": "",
-            "infoPostFix":  "",
-            "search":       "搜尋:",
-            "paginate": {
-              "first":    "第一頁",
-              "previous": "上一頁",
-              "next":     "下一頁",
-              "last":     "最後一頁"
-            },
-            "aria": {
-              "sortAscending":  ": 升冪排列",
-              "sortDescending": ": 降冪排列"
-            }
+    jQuery(document).ready(function() {
+      jQuery('#example').DataTable({
+        responsive: {
+          details: {
+            display: jQuery.fn.dataTable.Responsive.display.modal( {
+              header: function ( row ) {
+                var data = row.data();
+                return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {margin:0 auto;}</style>'
+              }
+            } ),
+            renderer: jQuery.fn.dataTable.Responsive.renderer.tableAll( {
+              tableClass: 'table'
+            } )            
           }
-        }) 
-      })
+
+        },   
+        columnDefs: [ {
+          className: 'control',
+          orderable: false,
+          targets:0
+        },
+        {
+          orderable: false,
+          targets:[1,2]
+        } ],
+        order: [[ 3, 'asc' ]],
+        "pagingType": "full",
+        "language": {
+          "processing":   "處理中...",
+          "loadingRecords": "載入中...",
+          "lengthMenu":   "顯示 _MENU_ 項結果",
+          "zeroRecords":  "沒有符合的結果",
+          "info":         "顯示第 _START_ 至 _END_ 項結果，共 _TOTAL_ 項",
+          "infoEmpty":    "顯示第 0 至 0 項結果，共 0 項",
+          "infoFiltered": "",
+          "infoPostFix":  "",
+          "search":       "搜尋:",
+          "paginate": {
+            "first":    "第一頁",
+            "previous": "上一頁",
+            "next":     "下一頁",
+            "last":     "最後一頁"
+          },
+          "aria": {
+            "sortAscending":  ": 升冪排列",
+            "sortDescending": ": 降冪排列"
+          }
+        }
+      }) 
     })
-  },
-  methods: {
-  },
-  data: function(){
-    return {
-      yearTerm:this.$store.yearTerm,
-    }
+  })
+},
+methods: {
+},
+data: function(){
+  return {
+    yearTerm:this.$store.yearTerm,
   }
+}
 }
 
 </script>

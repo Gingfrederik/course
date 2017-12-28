@@ -20,13 +20,13 @@ axios.defaults.withCredentials = true;
 export default {
   name: 'Logout',
   created() {
-      axios.get(this.$store.ip+'/logout',
-      {headers:{'Page-Id':this.id},withCredentials: true})
-      .then(response=>{
-        this.$store.pageid='';
-        this.$store.idcode='';
-        this.$store.loginstatus=false;
-        setTimeout(()=>{this.$router.push('/')},500);
+    axios.get(this.$store.ip+'/logout',
+    {headers:{'Page-Id':this.id},withCredentials: true})
+    .then(response=>{
+      this.$store.pageid='';
+      this.$store.idcode='';
+      this.$store.loginstatus=false;
+      setTimeout(()=>{this.$router.push('/')},500);
     })
   },
   methods: {

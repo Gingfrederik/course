@@ -454,223 +454,223 @@ export default {
         }
       })
     })
-},
-methods: {
-  refresh: function(){
-    if(this.$store.crush==false)
-    {
-      this.$store.gotcou.coutime = this.$store.coutime
-    }
-    else
-    {
-      this.$store.gotcou.coutime = null
-    }
-    axios.post(this.$store.ip+'/course',
-    qs.stringify(this.$store.gotcou),
-    { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
-    .then(response => {
-      this.$router.push('/tmp');
-      this.$store.courses = response.data.datas;
-    })
   },
-  init_cou: function () {
-    jQuery(":checkbox").prop('checked', false).parent().removeClass('active');
-    jQuery(":radio").prop('checked', false).parent().removeClass('active');
-    this.clear();
-    if(this.$store.crush==false)
-    {
-      this.$store.gotcou.coutime = this.$store.coutime
-    }
-    else
-    {
-      this.$store.gotcou.coutime = null
-    }
-    this.$store.gotcou.dept_code = this.$store.student.stmd_cur_dpt;
-    axios.post(this.$store.ip+'/course',
-    qs.stringify(this.$store.gotcou),
-    { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
-    .then(response => {
-      this.$router.push('/tmp')
-      this.$store.courses = response.data.datas;
-    })
-  },
-  cou: function () {
-    this.$store.gotcou.dept_code = "";
-    if(this.$store.crush==false)
-    {
-      this.$store.gotcou.coutime = this.$store.coutime
-    }
-    else
-    {
-      this.$store.gotcou.coutime = null
-    }
-    axios.post(this.$store.ip+'/course',
-    qs.stringify(this.$store.gotcou),
-    { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
-    .then(response => {
-      this.$router.push('/tmp')
-      this.$store.courses = response.data.datas
-    })
-  },
-  reg: function (opcode, event) {
-    axios.post(this.$store.ip+'/addregister',
-    qs.stringify({ 'opcode': opcode }),
-    { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
-    .then(response => {
-      if (response.data.result == true) {
-        jQuery.notify({
-          title: "<strong>已登記</strong>: ",
-          message: "<br>" + response.data.data.op_code + "</br>" +
-          response.data.data.cname
-        }, {
-          type: 'success',
-          placement: {
-            from: "bottom",
-            align: "right"
-          },  
-        });
-      }
-      else {
-        jQuery.notify({
-          title: "<strong>失敗</strong>: ",
-          message: "<br>" + response.data.message + "</br>"
-        }, {
-          type: 'danger',
-          placement: {
-            from: "bottom",
-            align: "right"
-          },  
-        });
-      }
-    }
-    )
-  },
-  tra: function (opcode, event) {
-    axios.post(this.$store.ip+'/addtrace',
-    qs.stringify({ 'opcode': opcode }),
-    { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
-    .then(response => {
-      if (response.data.result == true) {
-        jQuery.notify({
-          title: "<strong>已追蹤</strong>:",
-          message: "<br>" + response.data.data.op_code + "</br>" +
-          response.data.data.cname
-        }, {
-          type: 'success',
-          placement: {
-            from: "bottom",
-            align: "right"
-          },  
-        });
-      }
-    }
-    )
-  },
-  addcou: function (opcode, event) {
-    axios.post(this.$store.ip+'/addgot',
-    qs.stringify({ 'opcode': opcode }),
-    { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
-    .then(response => {
-      if (response.data.result == true) {
-        jQuery.notify({
-          title: "<strong>已加選</strong>: ",
-          message: "<br>" + response.data.data.op_code + "</br>" +
-          response.data.data.cname
-        }, {
-          type: 'success',
-          placement: {
-            from: "bottom",
-            align: "right"
-          },  
-        });
-      }
-      else {
-        jQuery.notify({
-          title: "<strong>失敗</strong>: ",
-          message: "<br>" + response.data.message + "</br>"
-        }, {
-          type: 'danger',
-          placement: {
-            from: "bottom",
-            align: "right"
-          },  
-        });
-      }
-    }
-    )
-  },
-  clearcheck: function(){
-    this.$store.gotcou.course_time=[]
-  },
-  clear: function(){
-    this.$store.gotcou = {
-      "dept_code": "",
-      "cross_type": "",
-      "filter_remain": "",
-      "cname": "",
-      "op_quality": "",
-      "mg_dept_code": "",
-      "non_stop": "",
-      "op_code": "",
-      "op_credit": "",
-      "op_time_1": "",
-      "op_time_2": "",
-      "op_time_3": "",
-      "teacher": "",
-      "transfer_mark": "",
-      "filtered": "",
-      "act_man": "",
-      "design": "",
-      "bet_dept": "",
-      "reg_man": "",
-      "memo1": "",
-      "sn_course_type": "",
-      "filter_man": "",
-      "sex": "",
-      "last_reg_man": "",
-      "withdraw_bits": "",
-      "dept_name": "",
-      "upper_man": "",
-      "div_code": "",
-      "mg_dept_name": "",
-      "act_remain": "",
-      "op_stdy": "",
-      "first_man": "",
-      "course_time": [],
-      "op_type":
+  methods: {
+    refresh: function(){
+      if(this.$store.crush==false)
       {
-        "a": "",
-        "b": "",
-        "b": "",
-        "d": "",
-        "e": "",
-        "f": "",
-        "g": "",
-        "h": "",
-        "i": "",
-        "j": "",
-        "k": "",
-        "l": "",
-        "m": "",
-        "n": "",
-        "o": "",
-        "p": ""
-      },
-      "op_man": "",
-      "bet_bln": "",
-      "coutime":""
-    }
+        this.$store.gotcou.coutime = this.$store.coutime
+      }
+      else
+      {
+        this.$store.gotcou.coutime = null
+      }
+      axios.post(this.$store.ip+'/course',
+      qs.stringify(this.$store.gotcou),
+      { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
+      .then(response => {
+        this.$router.push('/tmp');
+        this.$store.courses = response.data.datas;
+      })
+    },
+    init_cou: function () {
+      jQuery(":checkbox").prop('checked', false).parent().removeClass('active');
+      jQuery(":radio").prop('checked', false).parent().removeClass('active');
+      this.clear();
+      if(this.$store.crush==false)
+      {
+        this.$store.gotcou.coutime = this.$store.coutime
+      }
+      else
+      {
+        this.$store.gotcou.coutime = null
+      }
+      this.$store.gotcou.dept_code = this.$store.student.stmd_cur_dpt;
+      axios.post(this.$store.ip+'/course',
+      qs.stringify(this.$store.gotcou),
+      { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
+      .then(response => {
+        this.$router.push('/tmp')
+        this.$store.courses = response.data.datas;
+      })
+    },
+    cou: function () {
+      this.$store.gotcou.dept_code = "";
+      if(this.$store.crush==false)
+      {
+        this.$store.gotcou.coutime = this.$store.coutime
+      }
+      else
+      {
+        this.$store.gotcou.coutime = null
+      }
+      axios.post(this.$store.ip+'/course',
+      qs.stringify(this.$store.gotcou),
+      { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
+      .then(response => {
+        this.$router.push('/tmp')
+        this.$store.courses = response.data.datas
+      })
+    },
+    reg: function (opcode, event) {
+      axios.post(this.$store.ip+'/addregister',
+      qs.stringify({ 'opcode': opcode }),
+      { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
+      .then(response => {
+        if (response.data.result == true) {
+          jQuery.notify({
+            title: "<strong>已登記</strong>: ",
+            message: "<br>" + response.data.data.op_code + "</br>" +
+            response.data.data.cname
+          }, {
+            type: 'success',
+            placement: {
+              from: "bottom",
+              align: "right"
+            },  
+          });
+        }
+        else {
+          jQuery.notify({
+            title: "<strong>失敗</strong>: ",
+            message: "<br>" + response.data.message + "</br>"
+          }, {
+            type: 'danger',
+            placement: {
+              from: "bottom",
+              align: "right"
+            },  
+          });
+        }
+      }
+      )
+    },
+    tra: function (opcode, event) {
+      axios.post(this.$store.ip+'/addtrace',
+      qs.stringify({ 'opcode': opcode }),
+      { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
+      .then(response => {
+        if (response.data.result == true) {
+          jQuery.notify({
+            title: "<strong>已追蹤</strong>:",
+            message: "<br>" + response.data.data.op_code + "</br>" +
+            response.data.data.cname
+          }, {
+            type: 'success',
+            placement: {
+              from: "bottom",
+              align: "right"
+            },  
+          });
+        }
+      }
+      )
+    },
+    addcou: function (opcode, event) {
+      axios.post(this.$store.ip+'/addgot',
+      qs.stringify({ 'opcode': opcode }),
+      { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
+      .then(response => {
+        if (response.data.result == true) {
+          jQuery.notify({
+            title: "<strong>已加選</strong>: ",
+            message: "<br>" + response.data.data.op_code + "</br>" +
+            response.data.data.cname
+          }, {
+            type: 'success',
+            placement: {
+              from: "bottom",
+              align: "right"
+            },  
+          });
+        }
+        else {
+          jQuery.notify({
+            title: "<strong>失敗</strong>: ",
+            message: "<br>" + response.data.message + "</br>"
+          }, {
+            type: 'danger',
+            placement: {
+              from: "bottom",
+              align: "right"
+            },  
+          });
+        }
+      }
+      )
+    },
+    clearcheck: function(){
+      this.$store.gotcou.course_time=[]
+    },
+    clear: function(){
+      this.$store.gotcou = {
+        "dept_code": "",
+        "cross_type": "",
+        "filter_remain": "",
+        "cname": "",
+        "op_quality": "",
+        "mg_dept_code": "",
+        "non_stop": "",
+        "op_code": "",
+        "op_credit": "",
+        "op_time_1": "",
+        "op_time_2": "",
+        "op_time_3": "",
+        "teacher": "",
+        "transfer_mark": "",
+        "filtered": "",
+        "act_man": "",
+        "design": "",
+        "bet_dept": "",
+        "reg_man": "",
+        "memo1": "",
+        "sn_course_type": "",
+        "filter_man": "",
+        "sex": "",
+        "last_reg_man": "",
+        "withdraw_bits": "",
+        "dept_name": "",
+        "upper_man": "",
+        "div_code": "",
+        "mg_dept_name": "",
+        "act_remain": "",
+        "op_stdy": "",
+        "first_man": "",
+        "course_time": [],
+        "op_type":
+        {
+          "a": "",
+          "b": "",
+          "b": "",
+          "d": "",
+          "e": "",
+          "f": "",
+          "g": "",
+          "h": "",
+          "i": "",
+          "j": "",
+          "k": "",
+          "l": "",
+          "m": "",
+          "n": "",
+          "o": "",
+          "p": ""
+        },
+        "op_man": "",
+        "bet_bln": "",
+        "coutime":""
+      }
+    },
   },
-},
-data: function () {
-  return {
-    id: this.$store.pageid,
-    stagecode:this.$store.stagecode,
-    yearTerm:this.$store.yearTerm,
-    ordtime:['A','1','2','3','4','B','5','6','7','8','C','D','E','F','G'],
+  data: function () {
+    return {
+      id: this.$store.pageid,
+      stagecode:this.$store.stagecode,
+      yearTerm:this.$store.yearTerm,
+      ordtime:['A','1','2','3','4','B','5','6','7','8','C','D','E','F','G'],
+    }
   }
 }
-  }
 
 </script>
 

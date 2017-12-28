@@ -1,13 +1,13 @@
 <template>
   <footer class="footer">
     <div class="container">
-  <div class="row d-flex justify-content-center">
-    <div class="col-xs-6 col-sm-6 col-md-6">
-      <span class="text-muted">Copyright &copy;{{year}} Gingfrederik All Rights Reserved</span>
- <a target="_blank" href="https://www.facebook.com/cycucourse/"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a> 
- <a target="_blank" href="https://github.com/Gingfrederik/course"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a> 
-    </div>
-  </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <span class="text-muted">Copyright &copy;{{year}} Gingfrederik All Rights Reserved</span>
+          <a target="_blank" href="https://www.facebook.com/cycucourse/"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a> 
+          <a target="_blank" href="https://github.com/Gingfrederik/course"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a> 
+        </div>
+      </div>
     </div>
   </footer>
 </template>
@@ -21,7 +21,7 @@ export default {
   },
   data: function(){
     return{
-     year: ""
+      year: ""
     }
   }
 }
@@ -30,10 +30,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 a {
-color: #636c72;
+  color: #636c72;
 }
 a:focus, a:hover {
-    color: #bccad0;
+  color: #bccad0;
 }
 .footer {
   position: absolute;

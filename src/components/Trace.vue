@@ -6,11 +6,11 @@
     <div class="row justify-content-between">
       <div class="col-md-4 col-sm-10">
         <h5>
-        <span class="badge badge-pill badge-default">
-          <i class="fa fa-info-circle" aria-hidden="true">&nbsp;課綱</i>
-          &nbsp;
-          <i class="fa fa-question-circle" aria-hidden="true">&nbsp;選課大全</i>
-        </span>
+          <span class="badge badge-pill badge-default">
+            <i class="fa fa-info-circle" aria-hidden="true">&nbsp;課綱</i>
+            &nbsp;
+            <i class="fa fa-question-circle" aria-hidden="true">&nbsp;選課大全</i>
+          </span>
         </h5>
       </div>
       <div class="col-md-4 col-sm-10">
@@ -26,34 +26,34 @@
     <thead>
       <tr> 
         <th class="control max-desktop" data-priority="1"></th>
-            <th class="max-desktop" data-priority="2">選項</th>
-            <th class="min-tablet-p">資訊</th>
-            <th class="max-desktop" data-priority="3">名稱</th>
-            <th class="min-tablet-l">時間</th>
-            <th class="min-tablet-l">教師</th>
-            <th class="min-tablet-p">餘額</th>
-            <th class="desktop">總額</th>
-            <th class="max-desktop" data-priority="4">代碼</th>
-            <th class="desktop">學分</th>
-            <th class="desktop">類別</th>
-            <th class="desktop">開課系級</th>
+        <th class="max-desktop" data-priority="2">選項</th>
+        <th class="min-tablet-p">資訊</th>
+        <th class="max-desktop" data-priority="3">名稱</th>
+        <th class="min-tablet-l">時間</th>
+        <th class="min-tablet-l">教師</th>
+        <th class="min-tablet-p">餘額</th>
+        <th class="desktop">總額</th>
+        <th class="max-desktop" data-priority="4">代碼</th>
+        <th class="desktop">學分</th>
+        <th class="desktop">類別</th>
+        <th class="desktop">開課系級</th>
       </tr>
     </thead>
     <tbody>
       <tr v-for = "course in courses.datas">
         <td></td>
         <td>
-        <div v-if="$store.stagecode==6" class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" id="deltraceSubmit" class="btn btn-outline-primary btn-sm" @click="deltra(course.op_code,$event)">取消</button>
-          <button type="button" class="btn btn-primary btn-sm" @click="reg(course.op_code,$event)">登記</button>
-        </div>
-        <div v-else-if="$store.stagecode==3" class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" id="deltraceSubmit" class="btn btn-outline-primary btn-sm" @click="deltra(course.op_code,$event)">取消</button>
-          <button type="button" class="btn btn-primary btn-sm" @click="addcou(course.op_code,$event)">加選</button>
-        </div>
-        <div v-else class="btn-group" role="group" aria-label="Basic example">
-          <button type="button" id="deltraceSubmit" class="btn btn-outline-primary btn-sm" @click="deltra(course.op_code,$event)">取消</button>
-        </div>
+          <div v-if="$store.stagecode==6" class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" id="deltraceSubmit" class="btn btn-outline-primary btn-sm" @click="deltra(course.op_code,$event)">取消</button>
+            <button type="button" class="btn btn-primary btn-sm" @click="reg(course.op_code,$event)">登記</button>
+          </div>
+          <div v-else-if="$store.stagecode==3" class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" id="deltraceSubmit" class="btn btn-outline-primary btn-sm" @click="deltra(course.op_code,$event)">取消</button>
+            <button type="button" class="btn btn-primary btn-sm" @click="addcou(course.op_code,$event)">加選</button>
+          </div>
+          <div v-else class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" id="deltraceSubmit" class="btn btn-outline-primary btn-sm" @click="deltra(course.op_code,$event)">取消</button>
+          </div>
         </td>
         <td>
           <a target = "_blank" :href="'http://cmap.cycu.edu.tw:8080/Syllabus/CoursePreview.html?yearTerm='+yearTerm+'&opCode='+course.op_code">
@@ -64,14 +64,14 @@
           </a>
         </td>
         <td>{{course.cname}}</td>
-            <td>{{course.op_time_1}}&nbsp;{{course.op_time_2}}&nbsp;{{course.op_time_3}}</td>
-            <td>{{course.teacher}}</td>
-            <td>{{course.act_remain}}</td>
-	    <td>{{course.op_man}}</td>
-            <td>{{course.op_code}}</td>
-            <td>{{course.op_credit}}</td>
-            <td>{{course.op_type}}</td>
-            <td>{{course.dept_name}}</td>
+        <td>{{course.op_time_1}}&nbsp;{{course.op_time_2}}&nbsp;{{course.op_time_3}}</td>
+        <td>{{course.teacher}}</td>
+        <td>{{course.act_remain}}</td>
+        <td>{{course.op_man}}</td>
+        <td>{{course.op_code}}</td>
+        <td>{{course.op_credit}}</td>
+        <td>{{course.op_type}}</td>
+        <td>{{course.dept_name}}</td>
       </tr>
     </tbody>
   </table>
@@ -97,28 +97,28 @@ export default {
     }).then(function(event){
       jQuery(document).ready(function() {
         jQuery('#example').DataTable({
-	  "iDisplayLength": 100,
+          "iDisplayLength": 100,
           responsive: {
             details: {
               display: jQuery.fn.dataTable.Responsive.display.modal( {
                 header: function ( row ) {
                   var data = row.data();
-return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {margin:0 auto;}</style>'
+                  return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {margin:0 auto;}</style>'
                 }
               } ),
               renderer: function ( api, rowIdx, columns ) {
                 var data = $.map( columns, function ( col, i ) {
-                    return col.hidden ?
-                        '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
-                            '<td>'+col.title+':'+'</td> '+
-                            '<td>'+col.data+'</td>'+
-                        '</tr>' :
-                        '';
+                  return col.hidden ?
+                  '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
+                  '<td>'+col.title+':'+'</td> '+
+                  '<td>'+col.data+'</td>'+
+                  '</tr>' :
+                  '';
                 } ).join('');
                 return data ?
-                    $('<table/ class="table dtr-details">').append( data ) :
-                    false;
-               }           
+                $('<table/ class="table dtr-details">').append( data ) :
+                false;
+              }           
             }
 
           },   
@@ -169,14 +169,14 @@ return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {marg
         {
           jQuery.notify({
             title: "<strong>已登記</strong>: ",
-	    message: "<br>"+response.data.data.op_code+"</br>"+
-	    response.data.data.cname
-	    },{
-type: 'success',
-placement: {
-from: "bottom",
-align: "right"
-},  
+            message: "<br>"+response.data.data.op_code+"</br>"+
+            response.data.data.cname
+          },{
+            type: 'success',
+            placement: {
+              from: "bottom",
+              align: "right"
+            },  
           });
         }
         else
@@ -186,10 +186,10 @@ align: "right"
             message: "<br>"+response.data.message+"</br>"
           },{
             type: 'danger',
- placement: {
-                  from: "bottom",
-                  align: "right"
-                },  
+            placement: {
+              from: "bottom",
+              align: "right"
+            },  
           });
         }
       }
@@ -206,13 +206,13 @@ align: "right"
           jQuery.notify({
             title: "<strong>已取消追蹤</strong>",
             message:""
-            }
+          }
           ,{
             type: 'success',
- placement: {
-                  from: "bottom",
-                  align: "right"
-                },  
+            placement: {
+              from: "bottom",
+              align: "right"
+            },  
           });
           axios.get(this.$store.ip+'/tracelist',
           {headers:{'Page-Id':this.$store.pageid},withCredentials: true})
@@ -228,10 +228,10 @@ align: "right"
             message: "<br>"+response.data.message+"</br>"
           },{
             type: 'danger',
- placement: {
-                  from: "bottom",
-                  align: "right"
-                },  
+            placement: {
+              from: "bottom",
+              align: "right"
+            },  
           });
         }
       }

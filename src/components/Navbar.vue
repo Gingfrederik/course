@@ -48,11 +48,11 @@
 <script>
 export default {
   name: 'Navbar',
-	methods: {
-		navbar: function(){
-			jQuery('#bd-main-nav').collapse('toggle');
-		},
-	},
+  methods: {
+    navbar: function(){
+      jQuery('#bd-main-nav').collapse('toggle');
+    },
+  },
   data: function(){
     return{
     }

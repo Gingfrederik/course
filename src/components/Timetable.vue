@@ -3,21 +3,21 @@
   <br></br>
   <div class="container">
 
-  <div id="table_header" class="container">
-    <div class="row justify-content-between">
-      <div class="col-md-4 col-sm-10">
+    <div id="table_header" class="container">
+      <div class="row justify-content-between">
+        <div class="col-md-4 col-sm-10">
+        </div>
+        <div class="col-md-4 col-sm-10">
+          <h2>課程表</h2>
+        </div>
+        <div class="col-md-4 col-sm-10">
+          <h5>
+            <span class="badge badge-info">
+              目前學分:{{$store.student.credit_total}}/{{$store.student.max_limit}}
+            </span>
+          </h5>
+        </div>
       </div>
-      <div class="col-md-4 col-sm-10">
-        <h2>課程表</h2>
-      </div>
-      <div class="col-md-4 col-sm-10">
-	<h5>
-        <span class="badge badge-info">
-	     目前學分:{{$store.student.credit_total}}/{{$store.student.max_limit}}
-        </span>
-	</h5>
-      </div>
-    </div>
     </div>
     <br></br>
     <table class="table table-sm table-bordered center-all">
