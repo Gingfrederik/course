@@ -365,7 +365,7 @@
             <i title="選課大全" class="fa fa-question-circle fa-2x" aria-hidden="true"></i>
           </a>
         </td>
-        <td><i v-if="course.cross_type" class="fa fa-check-circle" aria-hidden="true"></i>{{course.cname}}</td>
+        <td>{{course.cname}}<i v-if="course.cross_type" class="fa fa-check-circle" aria-hidden="true"></i></td>
         <td>{{course.op_time_1}}&nbsp;{{course.op_time_2}}&nbsp;{{course.op_time_3}}</td>
         <td>{{course.teacher}}</td>
         <td>{{course.act_remain}}</td>
@@ -402,7 +402,7 @@ export default {
             display: jQuery.fn.dataTable.Responsive.display.modal({
               header: function (row) {
                 var data = row.data();
-                return '<br>' + data[5] + '</br>' + data[3] + '<style type="text/css">.modal-title {margin:0 auto;}</style>'
+                return '</br>' + data[3] + '</br>' + data[9] + '<style type="text/css">.modal-title {margin:0 auto;}</style>'
               }
             }),
             renderer: function (api, rowIdx, columns) {
