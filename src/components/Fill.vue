@@ -16,14 +16,9 @@
         </h5>
       </div>
       <div class="col-md-4 col-sm-10">
-        <h2>修課清單</h2>
+        <h2>遞補清單</h2>
       </div>
       <div class="col-md-4 col-sm-10">
-        <h5>
-          <span class="badge badge-info">
-            目前學分:{{$store.student.credit_total}}/{{$store.student.max_limit}}
-          </span>
-        </h5>
       </div>
     </div>
   </div>
@@ -36,10 +31,10 @@
         <th class="max-desktop" data-priority="2">選項</th>
         <th class="min-tablet-p">資訊</th>
         <th class="max-desktop" data-priority="3">名稱(跨)</th>
+        <th class="min-tablet-l">序號</th>
         <th class="min-tablet-l">時間</th>
         <th class="min-tablet-l">教師</th>
-        <th class="min-tablet-p">餘額(總)</th>
-        <th class="desktop">去年登記</th>
+        <th class="min-tablet-p">餘額</th>
         <th class="max-desktop" data-priority="4">代碼</th>
         <th class="desktop">學分</th>
         <th class="desktop">類別</th>
@@ -52,7 +47,7 @@
         <td>
 
           <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" id="deltraceSubmit" class="btn btn-outline-primary" @click="delgot(course.op_code,$event)">退選</button>
+            <button type="button" class="btn btn-outline-primary" @click="delfill(course.op_code,$event)" >取消</button>
           </div>
         </td>
         <td>
@@ -64,10 +59,10 @@
           </a>
         </td>
         <td>{{course.cname}}<i v-if="course.bet_dept" class="fa fa-check-circle" aria-hidden="true"></i></td>
+        <td>{{course.ord}}</td>
         <td>{{course.op_time_1}}&nbsp;{{course.op_time_2}}&nbsp;{{course.op_time_3}}</td>
         <td>{{course.teacher}}</td>
         <td>{{course.act_remain}}&nbsp;({{course.op_man}})</td>
-        <td>{{course.last_reg_man}}</td>
         <td>{{course.op_code}}</td>
         <td>{{course.op_credit}}</td>
         <td>{{course.op_type}}</td>
@@ -85,27 +80,26 @@ import axios from 'axios'
 import qs from 'qs'
 
 export default {
-  name: 'Search',
+  name: 'Fill',
   created() {
     if(!(this.$store.loginstatus)){
       this.$router.push("/")
     };
-    axios.post(this.$store.ip+'/gotlist',
+    axios.post(this.$store.ip+'/filllist',
     qs.stringify({'idcode':this.$store.idcode}),
     {headers:{'Page-Id':this.$store.pageid},withCredentials: true})
     .then(response => {
-      // JSON responses are automatically parsed.
       this.courses = response.data
-
     }).then(function(event){
       jQuery(document).ready(function() {
         jQuery('#example').DataTable({
+          "iDisplayLength": 50,
           responsive: {
             details: {
               display: jQuery.fn.dataTable.Responsive.display.modal( {
                 header: function ( row ) {
                   var data = row.data();
-                  return '<br>'+data[5]+'</br>'+data[3]+'<style type="text/css">.modal-title {margin:0 auto;}</style>'
+                return '</br>' + data[3] + '</br>' + data[8] + '</br>' + data[6] + '<style type="text/css">.modal-title {margin:0 auto;}</style>'
                 }
               } ),
               renderer: function ( api, rowIdx, columns ) {
@@ -116,11 +110,11 @@ export default {
                   '<td>'+col.data+'</td>'+
                   '</tr>' :
                   '';
-                } ).join('');
+                }).join('');
                 return data ?
                 $('<table/ class="table dtr-details">').append( data ) :
                 false;
-              }          
+              }           
             }
 
           },   
@@ -161,8 +155,8 @@ export default {
     })
   },
   methods: {
-    delgot: function(opcode,event){
-      axios.post(this.$store.ip+'/delgot',
+    delfill: function(opcode,event){
+      axios.post(this.$store.ip+'/delfill',
       qs.stringify({'opcode':opcode}),
       {headers:{'Page-Id':this.id},withCredentials: true})
       .then(response=>
@@ -170,9 +164,7 @@ export default {
         if(response.data.result==true)
         {
           jQuery.notify({
-            title: "<strong>已退選</strong>: ",
-            message: "<br>"+response.data.data.op_code+"</br>"+
-            response.data.data.cname
+            title: "<strong>已取消遞補</strong>",
           },{
             type: 'success',
             placement: {
@@ -180,13 +172,13 @@ export default {
               align: "right"
             },  
           });
-          axios.post(this.$store.ip+'/gotlist',
+          axios.post(this.$store.ip+'/filllist',
           qs.stringify({'idcode':this.$store.idcode}),
           {headers:{'Page-Id':this.$store.pageid},withCredentials: true})
           .then(response => {
             this.$router.push('/tmp');
             this.courses = response.data;
-          })
+          }) 
         }
         else
         {
@@ -201,13 +193,14 @@ export default {
             },  
           });
         }
-      })
+      }
+      )
     }
   },
   data: function(){
     return {
       id:this.$store.pageid,
-      yearTerm:this.$store.yeatTerm,
+      yearTerm:this.$store.yearTerm,
       courses:this.courses
     }
   }

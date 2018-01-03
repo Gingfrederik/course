@@ -215,6 +215,16 @@
                 </div>
               </div>
               <div class="form-group row">
+                <label class="col-sm-3 col-form-label">跨系</label>
+                <div class="col-sm-8">
+                  <div class="form-check form-check-inline">
+                    <label class="form-check-label">
+                      <input class="form-check-input" value="1" v-model="$store.gotcou.bet_dept" type="checkbox" >
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
                 <label class="col-sm-3 col-form-label">課程類別</label>
                 <div class="col-sm-8">
                   <div class="form-check form-check-inline">
@@ -309,10 +319,10 @@
                   </div>
                 </div>
               </div>
+
             </form>
           </div>
         </div>
-
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
           <button type="button" class="btn btn-warning" @click="init_cou" data-dismiss="modal">清除搜尋條件</button>
@@ -329,11 +339,10 @@
         <th class="control max-desktop" data-priority="1"></th>
         <th class="max-desktop" data-priority="2">選項</th>
         <th class="min-tablet-p">資訊</th>
-        <th class="max-desktop" data-priority="3">(跨)名稱</th>
+        <th class="max-desktop" data-priority="3">名稱(跨)</th>
         <th class="min-tablet-l">時間</th>
         <th class="min-tablet-l">教師</th>
-        <th class="min-tablet-p">餘額</th>
-        <th class="desktop">總額</th>
+        <th class="min-tablet-p">餘額(總)</th>
         <th class="desktop">去年登記</th>
         <th class="max-desktop" data-priority="4">代碼</th>
         <th class="desktop">學分</th>
@@ -365,11 +374,10 @@
             <i title="選課大全" class="fa fa-question-circle fa-2x" aria-hidden="true"></i>
           </a>
         </td>
-        <td>{{course.cname}}<i v-if="course.cross_type" class="fa fa-check-circle" aria-hidden="true"></i></td>
+        <td>{{course.cname}}<i v-if="course.bet_dept" class="fa fa-check-circle" aria-hidden="true"></i></td>
         <td>{{course.op_time_1}}&nbsp;{{course.op_time_2}}&nbsp;{{course.op_time_3}}</td>
         <td>{{course.teacher}}</td>
-        <td>{{course.act_remain}}</td>
-        <td>{{course.op_man}}</td>
+        <td>{{course.act_remain}}&nbsp;({{course.op_man}})</td>
         <td>{{course.last_reg_man}}</td>
         <td>{{course.op_code}}</td>
         <td>{{course.op_credit}}</td>
@@ -402,7 +410,7 @@ export default {
             display: jQuery.fn.dataTable.Responsive.display.modal({
               header: function (row) {
                 var data = row.data();
-                return '</br>' + data[3] + '</br>' + data[9] + '<style type="text/css">.modal-title {margin:0 auto;}</style>'
+                return '</br>' + data[3] + '</br>' + data[8] + '</br>' + data[5] + '<style type="text/css">.modal-title {margin:0 auto;}</style>'
               }
             }),
             renderer: function (api, rowIdx, columns) {

@@ -61,6 +61,9 @@ export default {
           from: "top",
           align: "center"
         },  
+        offset:{
+          y:80
+        },
         delay:1000,
       });
       var md5pass = CryptoJS.MD5(this.inpass).toString();
@@ -87,6 +90,10 @@ export default {
               from: "top",
               align: "center"
             },  
+            offset:{
+              y:80
+            },
+            delay:1000,
           });
           this.$store.loginstatus = true
           axios.get(this.$store.ip+'/content',

@@ -10,6 +10,8 @@
             <i class="fa fa-info-circle" aria-hidden="true">&nbsp;課綱</i>
             &nbsp;
             <i class="fa fa-question-circle" aria-hidden="true">&nbsp;選課大全</i>
+            &nbsp;
+            <i class="fa fa-check-circle" aria-hidden="true">&nbsp;跨系</i>
           </span>
         </h5>
       </div>
@@ -28,11 +30,11 @@
         <th class="control max-desktop" data-priority="1"></th>
         <th class="max-desktop" data-priority="2">選項</th>
         <th class="min-tablet-p">資訊</th>
-        <th class="max-desktop" data-priority="3">名稱</th>
+        <th class="max-desktop" data-priority="3">名稱(跨)</th>
         <th class="min-tablet-l">時間</th>
         <th class="min-tablet-l">教師</th>
-        <th class="min-tablet-p">餘額</th>
-        <th class="desktop">總額</th>
+        <th class="min-tablet-p">餘額(總)</th>
+        <th class="desktop">去年登記</th>
         <th class="max-desktop" data-priority="4">代碼</th>
         <th class="desktop">學分</th>
         <th class="desktop">類別</th>
@@ -63,11 +65,11 @@
             <i title="選課大全" class="fa fa-question-circle fa-2x" aria-hidden="true"></i>
           </a>
         </td>
-        <td>{{course.cname}}</td>
+        <td>{{course.cname}}<i v-if="course.bet_dept" class="fa fa-check-circle" aria-hidden="true"></i></td>
         <td>{{course.op_time_1}}&nbsp;{{course.op_time_2}}&nbsp;{{course.op_time_3}}</td>
         <td>{{course.teacher}}</td>
-        <td>{{course.act_remain}}</td>
-        <td>{{course.op_man}}</td>
+        <td>{{course.act_remain}}&nbsp;({{course.op_man}})</td>
+        <td>{{course.last_reg_man}}</td>
         <td>{{course.op_code}}</td>
         <td>{{course.op_credit}}</td>
         <td>{{course.op_type}}</td>

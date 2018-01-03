@@ -19,6 +19,9 @@
             <router-link @click.native="navbar" class="nav-link" to="/register">登記清單</router-link>
           </li>
           <li class="nav-item active">
+            <router-link @click.native="navbar" class="nav-link" to="/fill">遞補清單</router-link>
+          </li>
+          <li class="nav-item active">
             <router-link @click.native="navbar" class="nav-link" to="/got">修課清單</router-link>
           </li>
           <li class="nav-item active">

@@ -4,8 +4,10 @@ import Router from 'vue-router'
 import Login from '../components/Login'
 import Logout from '../components/Logout'
 import Home from '../components/Home'
+import Stage from '../components/Stage'
 
 import Trace from '../components/Trace'
+import Fill from '../components/Fill'
 import Tmp from '../components/Tmp'
 import Register from '../components/Register'
 import Got from '../components/Got'
@@ -35,8 +37,16 @@ export default new Router({
       component: Login
     },
     {
+      path: '/stage',
+      component: Stage 
+    },
+    {
       path: '/search',
       component: Search
+    },
+    {
+      path: '/fill',
+      component: Fill 
     },
     {
       path: '/register',
