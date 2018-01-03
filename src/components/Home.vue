@@ -35,6 +35,8 @@
             <i class="fa fa-user" aria-hidden="true"></i> 登入
           </router-link>
         </div>
+        <br><br>
+        <div class="fb-like" data-href="https://www.facebook.com/cycucourse/" data-width="100px" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
       </div>
     </div>
   </div>
