@@ -3,12 +3,23 @@
   <div class="container">
     <br><br>
     <div class="alert alert-info" role="alert">
-      目前階段
+      目前階段:
       <strong v-if="stage!=null">
+        {{stagetype[stage.datas[0].sn_stage_type]}}
         <br>
         {{stage.datas[0].bgtime}}&nbsp;~&nbsp;{{stage.datas[0].edtime}}
         </br>
         <span style="white-space: pre-line">{{stage.datas[0].remark}}</span>
+      </strong>
+    </div>
+    <div v-if="stage.datas[1]!=null" class="alert alert-warning" role="alert">
+      下個階段:
+      <strong>
+        {{stagetype[stage.datas[1].sn_stage_type]}}
+        <br>
+        {{stage.datas[1].bgtime}}&nbsp;~&nbsp;{{stage.datas[1].edtime}}
+        </br>
+        <span style="white-space: pre-line">{{stage.datas[1].remark}}</span>
       </strong>
     </div>
 
@@ -41,6 +52,13 @@ export default {
   })},
   data: function(){
     return {
+      stagetype:{
+        "11":"第一次篩選登記",
+        "12":"第二次篩選登記",
+        "21":"第一次加退選",
+        "22":"第二次加退選",
+        "23":"第三次加退選"
+      },
       stage:null
     }
   }

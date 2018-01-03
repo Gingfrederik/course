@@ -28,7 +28,7 @@
         <td>{{stagetype[stage.sn_stage_type]}}</td>
         <td>{{stage.bgtime}}</td>
         <td>{{stage.edtime}}</td>
-        <td>{{stage.remark}}</td>
+        <td><span style="white-space: pre-line">{{stage.remark}}</span></td>
       </tr>
     </tbody>
   </table>
