@@ -25,7 +25,7 @@ new Vue({
       pageid: null,
       courses:null,
       ip:'https://course.geederik.tw:8443',
-      //ip:'http://192.168.0.112:5000',
+      //ip:'http://127.0.0.1:5000',
     }
   },
   render: h => h(App),

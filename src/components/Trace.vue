@@ -238,6 +238,39 @@ export default {
         }
       }
       )
+    },
+    addcou: function (opcode, event) {
+      axios.post(this.$store.ip+'/addgot',
+      qs.stringify({ 'opcode': opcode }),
+      { headers: { 'Page-Id': this.$store.pageid }, withCredentials: true })
+      .then(response => {
+        if (response.data.result == true) {
+          jQuery.notify({
+            title: "<strong>已加選</strong>: ",
+            message: "<br>" + response.data.data.op_code + "</br>" +
+            response.data.data.cname
+          }, {
+            type: 'success',
+            placement: {
+              from: "bottom",
+              align: "right"
+            },  
+          });
+        }
+        else {
+          jQuery.notify({
+            title: "<strong>失敗</strong>: ",
+            message: "<br>" + response.data.message + "</br>"
+          }, {
+            type: 'danger',
+            placement: {
+              from: "bottom",
+              align: "right"
+            },  
+          });
+        }
+      }
+      )
     }
   },
   data: function(){

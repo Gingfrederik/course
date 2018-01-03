@@ -165,6 +165,7 @@ export default {
         {
           jQuery.notify({
             title: "<strong>已取消遞補</strong>",
+            message: ""
           },{
             type: 'success',
             placement: {
