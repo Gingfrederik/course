@@ -12,15 +12,17 @@
         <span style="white-space: pre-line">{{stage.datas[0].remark}}</span>
       </strong>
     </div>
-    <div v-if="stage.datas[1]!=null" class="alert alert-warning" role="alert">
-      下個階段:
-      <strong>
-        {{stagetype[stage.datas[1].sn_stage_type]}}
-        <br>
-        {{stage.datas[1].bgtime}}&nbsp;~&nbsp;{{stage.datas[1].edtime}}
-        </br>
-        <span style="white-space: pre-line">{{stage.datas[1].remark}}</span>
-      </strong>
+    <div v-if="stage!=null">
+      <div v-if="stage.datas[1]!=null" class="alert alert-warning" role="alert">
+        下個階段:
+        <strong>
+          {{stagetype[stage.datas[1].sn_stage_type]}}
+          <br>
+          {{stage.datas[1].bgtime}}&nbsp;~&nbsp;{{stage.datas[1].edtime}}
+          </br>
+          <span style="white-space: pre-line">{{stage.datas[1].remark}}</span>
+        </strong>
+      </div>
     </div>
 
     <div class="Aligner">
